@@ -1,0 +1,48 @@
+---
+/**
+ * Labelled photo placeholder. Swap for a real <Image> once photos arrive.
+ * `label` describes the intended photo (it is also the accessible name).
+ */
+interface Props {
+  label: string;
+  ratio?: string;
+  tone?: 'kraft' | 'light' | 'green';
+  class?: string;
+}
+const { label, ratio = '4 / 3', tone = 'light', class: className = '' } = Astro.props;
+---
+<div
+  class:list={['photo-slot', `photo-slot--${tone}`, className]}
+  style={`aspect-ratio: ${ratio}`}
+  role="img"
+  aria-label={`Photo placeholder: ${label}`}
+>
+  <span class="photo-slot__tag" aria-hidden="true">Photo</span>
+  <span class="photo-slot__label" aria-hidden="true">{label}</span>
+</div>
+
+<style>
+  .photo-slot {
+    display: grid;
+    place-content: center;
+    gap: 0.35rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    text-align: center;
+    border: 1.5px dashed currentColor;
+  }
+  .photo-slot--light { background: var(--cream-deep); color: #6e5536; }
+  .photo-slot--kraft { background: var(--kraft-paper); color: #3f2b14; border-color: rgba(63, 43, 20, 0.45); }
+  .photo-slot--green { background: rgba(255, 255, 255, 0.06); color: var(--cream); }
+  .photo-slot__tag {
+    font-family: var(--font-display);
+    font-stretch: 125%;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .photo-slot__label { font-size: var(--step--1); font-weight: 600; max-width: 30ch; margin-inline: auto; }
+</style>

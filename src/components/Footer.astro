@@ -1,0 +1,80 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <img src="/brand/tera-logo-reversed.svg" alt="Tera Food & Supply" width="356" height="152" />
+      <p>Packaging as good as your food. Designed and delivered in Calgary.</p>
+    </div>
+
+    <nav aria-label="Footer">
+      <h2 class="site-footer__title">Explore</h2>
+      <ul>
+        <li><a href="/packaging/">Packaging</a></li>
+        <li><a href="/how-it-works/">How it works</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/quote/">Request a quote</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <h2 class="site-footer__title">Contact</h2>
+      <ul>
+        <li>Phone: <span class="ph-dark">[phone]</span></li>
+        <li>Email: <span class="ph-dark">[email]</span></li>
+        <li>Serving Calgary, Alberta</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container site-footer__base">
+    <p>© {year} Tera Food &amp; Supply Inc.</p>
+    <a href="/privacy/">Privacy policy</a>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--tera-green-deep);
+    color: #dfe7da;
+    padding-block: clamp(3rem, 6vw, 4.5rem) 1.5rem;
+  }
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+  .site-footer__brand { display: grid; gap: 1.25rem; align-content: start; }
+  .site-footer__brand img { width: 150px; }
+  .site-footer__brand p { max-width: 32ch; }
+  .site-footer__title {
+    font-family: var(--font-display);
+    font-stretch: 125%;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--leaf-light);
+    margin-bottom: 1rem;
+  }
+  .site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+  .site-footer a { color: var(--cream); }
+  .site-footer a:hover { color: var(--white); }
+  .site-footer :focus-visible { outline-color: var(--leaf-light); }
+  .ph-dark { color: #e6c18f; font-weight: 600; }
+  .site-footer__base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(244, 241, 234, 0.18);
+    font-size: var(--step--1);
+  }
+  @media (max-width: 760px) {
+    .site-footer__grid { grid-template-columns: 1fr 1fr; }
+    .site-footer__brand { grid-column: 1 / -1; }
+  }
+</style>

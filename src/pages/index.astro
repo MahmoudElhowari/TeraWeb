@@ -1,0 +1,475 @@
+---
+import Base from '../layouts/Base.astro';
+import PhotoSlot from '../components/PhotoSlot.astro';
+
+const segments = [
+  {
+    name: 'Restaurants and takeout',
+    need: 'Packaging that survives delivery and still looks good when it arrives.',
+    items: 'Food boxes, containers, takeout bags, seals',
+  },
+  {
+    name: 'Cafés and bakeries',
+    need: 'A cup and bag people recognise when they carry it down the street.',
+    items: 'Cups, lids and sleeves, bakery bags, pastry boxes, stickers',
+  },
+  {
+    name: 'Grocers and specialty food',
+    need: 'Shelf-ready packaging and labels that help sell the product.',
+    items: 'Product boxes, labels, wraps, branded bags',
+  },
+];
+
+const categories = [
+  {
+    name: 'Boxes and containers',
+    photo: 'Branded fold-and-lock takeout box and a windowed pastry box',
+    formats: ['Fold-and-lock paper boxes', 'Fibre bowls and compartment trays', 'Window boxes for baked goods'],
+    bestFor: 'Restaurants · bakeries · grab-and-go',
+  },
+  {
+    name: 'Bags',
+    photo: 'Kraft takeout bag with a printed logo and flat handles',
+    formats: ['Wide-gusset kraft takeout bags', 'Sealed delivery bags', 'Bakery bags with windows'],
+    bestFor: 'Takeout · delivery · grocers',
+  },
+  {
+    name: 'Cups, lids and sleeves',
+    photo: 'Printed double-wall coffee cup with a branded sleeve',
+    formats: ['Double-wall printed cups', 'Plastic-free coated cups', 'Printed sleeves and soup cups'],
+    bestFor: 'Cafés · bakeries · soup and noodle shops',
+  },
+  {
+    name: 'Labels, stickers and wraps',
+    photo: 'Seal sticker on a bag and a printed sandwich wrap',
+    formats: ['Tamper-evident seal stickers', 'Printed wraps and deli paper', 'Product labels with a QR code'],
+    bestFor: 'Everyone · the easiest first order',
+  },
+];
+
+const route = [
+  { name: 'Design', text: 'We design the full look around your dishes and send proofs.' },
+  { name: 'Factory', text: 'Our manufacturers make a sample for you to approve, then the full run.' },
+  { name: 'Freight', text: 'We book the shipping to Canada.' },
+  { name: 'Customs', text: 'Our broker clears it. Duties are already in your price.' },
+  { name: 'Storage', text: 'We check every shipment and store your stock in Calgary.' },
+  { name: 'Delivery', text: 'We deliver on a schedule or when you ask.' },
+];
+
+const reasons = [
+  {
+    title: 'Stand out',
+    text: 'Your packaging is the part of your brand that goes home with every customer.',
+  },
+  {
+    title: 'We handle everything',
+    text: 'Design, factory, freight, customs, storage and delivery. One contact, one price.',
+  },
+  {
+    title: 'Made for real service',
+    text: "We've worked in restaurants, so we design for heat, grease, stacking and delivery drivers.",
+  },
+  {
+    title: 'Never run out',
+    text: 'We store your stock in Calgary and plan reorders ahead, so the next shipment lands in time.',
+  },
+  {
+    title: 'Your choice on materials',
+    text: 'Paper and fibre options on every product line, with honest notes on cost and performance.',
+  },
+];
+---
+<Base
+  title="Tera Food & Supply | Custom food packaging in Calgary"
+  description="Custom-branded boxes, bags, cups and labels for Calgary restaurants, cafés, bakeries and food shops. Designed by us, made by our manufacturers, stored and delivered in Calgary."
+>
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__copy">
+      <span class="eyebrow">Custom packaging · Calgary</span>
+      <h1 id="hero-title">Packaging as good as your food.</h1>
+      <p class="hero__lede">
+        Custom packaging made for your menu: designed by us, made by our manufacturers, and stored and
+        delivered here in Calgary.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn-primary" href="/quote/">Request a quote <span aria-hidden="true">→</span></a>
+        <a class="btn btn-outline" href="/how-it-works/">See how it works</a>
+      </div>
+      <ul class="hero__facts">
+        <li>Design included</li>
+        <li>One all-in price per unit</li>
+        <li>Stored and delivered in Calgary</li>
+      </ul>
+    </div>
+    <div class="hero__media">
+      <PhotoSlot
+        tone="kraft"
+        ratio="auto"
+        class="hero__photo"
+        label="A full set of one customer's branded takeout packaging on a restaurant counter, natural light"
+      />
+    </div>
+  </section>
+
+  <!-- Who we work with -->
+  <section class="section" aria-labelledby="who-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Who we work with</span>
+        <h2 id="who-title">Built for independent food businesses</h2>
+        <p>
+          Owner-run spots with one to five locations, a brand they're proud of, and generic packaging today.
+        </p>
+      </div>
+      <ul class="segments">
+        {segments.map((s) => (
+          <li class="segment">
+            <h3>{s.name}</h3>
+            <p>{s.need}</p>
+            <p class="segment__items"><span class="visually-hidden">Typical items: </span>{s.items}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Packaging -->
+  <section class="section packaging" aria-labelledby="packaging-title">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div class="section-head">
+          <span class="eyebrow">Made to the menu, not off the shelf</span>
+          <h2 id="packaging-title">Everything that leaves your counter</h2>
+          <p>
+            We start from the dish: its size, how it travels and how it's eaten. Then we design the box around it.
+            These four categories are starting points, not limits.
+          </p>
+        </div>
+        <a class="btn btn-outline" href="/packaging/">See all packaging</a>
+      </div>
+
+      <ul class="specs">
+        {categories.map((c) => (
+          <li class="spec">
+            <PhotoSlot label={c.photo} ratio="4 / 3" />
+            <div class="spec__body">
+              <h3>{c.name}</h3>
+              <ul class="spec__formats">
+                {c.formats.map((f) => <li>{f}</li>)}
+              </ul>
+              <p class="spec__best"><span>Best for</span> {c.bestFor}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" aria-labelledby="how-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2 id="how-title">One call. We handle the rest.</h2>
+        <p>
+          You never deal with a factory, a freight company or customs. A first order takes about
+          <span class="ph">[X–Y weeks]</span>, mostly production and ocean freight, so we plan it with you up front.
+        </p>
+      </div>
+
+      <ol class="route">
+        {route.map((r) => (
+          <li class="route__stop">
+            <h3>{r.name}</h3>
+            <p>{r.text}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div class="reorder">
+        <p>
+          <strong>Then reorders take care of themselves.</strong> We watch your stock and start the next production run
+          early, so a new shipment lands before you run out.
+        </p>
+        <a href="/how-it-works/">See every step <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Tera -->
+  <section class="section why" aria-labelledby="why-title">
+    <div class="container why__grid">
+      <div class="section-head why__head">
+        <span class="eyebrow">Why Tera</span>
+        <h2 id="why-title">We know the kitchen</h2>
+        <p>
+          Tera was started by two partners with years in Calgary's restaurant industry. We kept seeing great food handed
+          over in the same generic boxes and bags, and knew it didn't have to be that way.
+        </p>
+        <a href="/about/">About us <span aria-hidden="true">→</span></a>
+      </div>
+      <ul class="reasons">
+        {reasons.map((r) => (
+          <li>
+            <h3>{r.title}</h3>
+            <p>{r.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Closing call to action -->
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="container cta__inner">
+      <div class="cta__copy">
+        <h2 id="cta-title">Let's see your packaging.</h2>
+        <p>
+          Tell us what you serve and what you need. We'll reply with an all-in price per unit within
+          <span class="ph-light">[1–2 business days]</span>.
+        </p>
+      </div>
+      <a class="btn btn-cream" href="/quote/">Request a quote <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    max-width: 1440px;
+    margin-inline: auto;
+    min-height: min(640px, 80vh);
+  }
+  .hero__copy {
+    display: grid;
+    align-content: center;
+    gap: 1.5rem;
+    padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 4vw, 4rem) clamp(3rem, 7vw, 6rem) max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
+  }
+  .hero__lede { font-size: var(--step-1); color: var(--ink-muted); max-width: 44ch; }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .hero__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 1.25rem 0 0;
+    border-top: 1px solid var(--line);
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--tera-green);
+  }
+  .hero__facts li { display: flex; align-items: center; gap: 0.5rem; }
+  .hero__facts li::before {
+    content: '';
+    width: 14px; height: 2px;
+    background: var(--kraft);
+  }
+  .hero__media { border-left: 8px solid var(--tera-green); display: flex; }
+  .hero__media :global(.hero__photo) { min-height: 100%; border: none; }
+
+  /* Segments */
+  .segments {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid var(--tera-green);
+  }
+  .segment {
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+    padding: 1.75rem 1.75rem 1.75rem 0;
+  }
+  .segment + .segment { padding-left: 1.75rem; border-left: 1px solid var(--line); }
+  .segment__items { font-size: var(--step--1); color: var(--ink-muted); }
+
+  /* Packaging spec cards */
+  .packaging { background: var(--paper); border-block: 1px solid var(--line); }
+  .section-head--split {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .section-head--split .section-head { margin: 0; }
+  .specs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-block: 2px solid var(--tera-green);
+  }
+  .spec {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+    padding: 1.25rem;
+    border-right: 1px solid var(--line);
+    min-width: 0;
+  }
+  .spec:last-child { border-right: none; }
+  .spec__body { display: grid; gap: 0.75rem; grid-template-rows: auto 1fr auto; }
+  .spec__formats { margin: 0; padding-left: 1.1rem; font-size: var(--step--1); display: grid; gap: 0.3rem; }
+  .spec__formats li::marker { color: var(--kraft); }
+  .spec__best {
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--line);
+  }
+  .spec__best span {
+    display: block;
+    font-family: var(--font-display);
+    font-stretch: 125%;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--kraft-text);
+  }
+
+  /* Route */
+  .route {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: stop;
+  }
+  .route__stop {
+    position: relative;
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+    padding: 1.5rem 1.25rem 0 0;
+    border-top: 3px solid var(--tera-green);
+    counter-increment: stop;
+  }
+  .route__stop::before {
+    content: counter(stop);
+    position: absolute;
+    top: -0.85rem;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 2px solid var(--tera-green);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: var(--tera-green);
+  }
+  .route__stop::after {
+    content: '';
+    position: absolute;
+    top: -9px;
+    right: 0;
+    border-left: 12px solid var(--kraft);
+    border-top: 7.5px solid transparent;
+    border-bottom: 7.5px solid transparent;
+  }
+  .route__stop:last-child::after { display: none; }
+  .route__stop p { font-size: var(--step--1); color: var(--ink-muted); }
+
+  .reorder {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    margin-top: 3rem;
+    padding: 1.5rem 1.75rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .reorder a { font-weight: 700; }
+
+  /* Why */
+  .why { background: var(--paper); border-top: 1px solid var(--line); }
+  .why__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .why__head { margin: 0; }
+  .why__head a { font-weight: 700; }
+  .reasons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .reasons li { display: grid; gap: 0.5rem; padding-top: 1rem; border-top: 2px solid var(--kraft); }
+  .reasons p { color: var(--ink-muted); }
+  .reasons li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+  /* CTA */
+  .cta { background: var(--tera-green); color: var(--cream); }
+  .cta__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-block: clamp(3rem, 7vw, 5rem);
+  }
+  .cta__copy { display: grid; gap: 1rem; }
+  .cta h2 { color: var(--cream); font-size: var(--step-3); font-stretch: 125%; }
+  .cta p { color: #dfe7da; font-size: var(--step-1); max-width: 48ch; }
+  .cta :focus-visible { outline-color: var(--cream); }
+  .ph-light { color: #e6c18f; font-weight: 600; }
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .spec:nth-child(2) { border-right: none; }
+    .spec:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+    .route { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 2.5rem; }
+    .route__stop:nth-child(3)::after { display: none; }
+    .why__grid { grid-template-columns: 1fr; }
+  }
+
+  /* Mobile */
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; min-height: 0; }
+    .hero__copy { padding: 2.5rem var(--gutter); }
+    .hero__media { border-left: none; border-top: 8px solid var(--tera-green); min-height: 260px; }
+    .hero__actions .btn { flex: 1 1 100%; }
+
+    .segments { grid-template-columns: 1fr; }
+    .segment, .segment + .segment { padding: 1.5rem 0; border-left: none; }
+    .segment + .segment { border-top: 1px solid var(--line); }
+
+    .reasons { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .specs { grid-template-columns: 1fr; }
+    .spec { border-right: none; border-bottom: 1px solid var(--line); padding-inline: 0; }
+    .spec:last-child { border-bottom: none; }
+
+    .route { grid-template-columns: 1fr; row-gap: 0; border-left: 3px solid var(--tera-green); margin-left: 0.8rem; }
+    .route__stop { border-top: none; padding: 0 0 1.75rem 1.75rem; }
+    .route__stop::before { top: -0.1rem; left: -0.95rem; }
+    .route__stop::after { display: none; }
+  }
+</style>

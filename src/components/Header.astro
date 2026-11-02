@@ -1,0 +1,115 @@
+---
+const links = [
+  { href: '/packaging/', label: 'Packaging' },
+  { href: '/how-it-works/', label: 'How it works' },
+  { href: '/about/', label: 'About' },
+];
+const path = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="/" class="site-header__logo">
+      <img src="/brand/tera-logo.svg" alt="Tera Food & Supply, home" width="356" height="152" />
+    </a>
+
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        {links.map((l) => (
+          <li><a href={l.href} aria-current={path.startsWith(l.href) ? 'page' : undefined}>{l.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <a href="/quote/" class="btn btn-green site-header__cta">Request a quote</a>
+
+    <details class="mobile-nav">
+      <summary aria-label="Menu">
+        <span class="mobile-nav__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="mobile-nav__text">Menu</span>
+      </summary>
+      <nav aria-label="Main, mobile">
+        <ul>
+          {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+          <li><a href="/quote/" class="btn btn-green">Request a quote</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    z-index: 10;
+  }
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 76px;
+  }
+  .site-header__logo { flex: none; margin-right: auto; }
+  .site-header__logo img { width: 128px; }
+
+  .site-nav ul { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+  .site-nav a {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink);
+    padding-block: 0.5rem;
+    border-bottom: 2px solid transparent;
+  }
+  .site-nav a:hover,
+  .site-nav a[aria-current='page'] { color: var(--tera-green); border-bottom-color: var(--kraft); }
+
+  .site-header__cta { min-height: 44px; padding-inline: 1.1rem; }
+
+  .mobile-nav { display: none; position: relative; }
+  .mobile-nav summary {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0 0.75rem;
+    border: 2px solid var(--tera-green);
+    border-radius: var(--radius);
+    color: var(--tera-green);
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .mobile-nav summary::-webkit-details-marker { display: none; }
+  .mobile-nav__bars { display: grid; gap: 4px; }
+  .mobile-nav__bars i { display: block; width: 18px; height: 2px; background: currentColor; }
+  .mobile-nav nav {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.75rem);
+    width: min(80vw, 300px);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 30px rgba(28, 42, 32, 0.12);
+    padding: 0.5rem;
+  }
+  .mobile-nav ul { list-style: none; margin: 0; padding: 0; display: grid; }
+  .mobile-nav a:not(.btn) {
+    display: block;
+    padding: 0.85rem 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-nav li:last-child { padding: 0.75rem 0.25rem 0.25rem; }
+  .mobile-nav .btn { width: 100%; }
+
+  @media (max-width: 860px) {
+    .site-nav,
+    .site-header__cta { display: none; }
+    .mobile-nav { display: block; }
+    .site-header__logo img { width: 104px; }
+  }
+</style>
