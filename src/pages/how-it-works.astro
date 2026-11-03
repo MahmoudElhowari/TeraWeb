@@ -1,0 +1,335 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const phases = [
+  {
+    name: 'Get started',
+    steps: [
+      {
+        title: 'First contact',
+        text: 'Send the quote form, call or message us, or we can drop by.',
+      },
+      {
+        title: 'Discovery visit',
+        text: 'We visit with samples, see how your food is served and delivered, and agree on items and quantities.',
+      },
+      {
+        title: 'Quote',
+        text: 'An all-in price per unit for each quantity tier, plus the lead time and a delivery plan.',
+        time: 'Within [1–2 business days]',
+      },
+    ],
+  },
+  {
+    name: 'Design',
+    steps: [
+      {
+        title: 'Design and digital proof',
+        text: 'We design your packaging around your dishes and send proofs for you to review.',
+        time: '[2] revision rounds included',
+      },
+      {
+        title: 'Approval and deposit',
+        text: 'You sign off the final proof and pay the deposit.',
+        time: '[50%] deposit',
+      },
+    ],
+  },
+  {
+    name: 'Make and ship',
+    steps: [
+      {
+        title: 'Physical sample',
+        text: 'The factory makes a pre-production sample. We check it, then you approve it.',
+      },
+      {
+        title: 'Production',
+        text: 'Your full run is made while we track progress with the factory.',
+        time: '[X weeks]',
+      },
+      {
+        title: 'Shipping and customs',
+        text: 'We ship it to Canada and our customs broker clears it. Duties are already in your price.',
+        time: '[X weeks]',
+      },
+    ],
+  },
+  {
+    name: 'Store and deliver',
+    steps: [
+      {
+        title: 'Arrival check and storage',
+        text: 'We count and inspect every shipment when it lands in Calgary, then store it for you.',
+      },
+      {
+        title: 'Delivery',
+        text: 'We bring your first batch, then the rest on a schedule or whenever you ask.',
+      },
+    ],
+  },
+];
+
+const getStarted = [
+  'Your logo, if you have one (any file type is fine)',
+  'A rough idea of what you need: boxes, bags, cups, labels',
+  'How many you go through in a week or month',
+  'When you need it by',
+];
+
+const faqs = [
+  {
+    q: 'How long does a first order take?',
+    a: 'About [X–Y weeks] from approval to delivery, mostly production and ocean freight. We tell you the timeline up front and never promise a date we can\'t meet. Reorders are planned ahead, so you shouldn\'t have to wait again.',
+  },
+  {
+    q: 'What is the minimum order?',
+    a: '[Minimum order per item]. The more you order of one item, the lower the price per unit.',
+  },
+  {
+    q: 'Do I need a designer or finished artwork?',
+    a: 'No. Design is included in every order. Send us your logo if you have one and we\'ll design the rest.',
+  },
+  {
+    q: 'Can I see a sample before the full order?',
+    a: 'Yes. The factory makes a pre-production sample, and nothing goes into full production until you approve it. [Sample included or charged: confirm]',
+  },
+  {
+    q: 'Where is the packaging made?',
+    a: 'By our manufacturers overseas. We handle the factory, freight and customs, then store and deliver your stock here in Calgary.',
+  },
+  {
+    q: 'Is the packaging food-safe?',
+    a: '[Food-safe materials, test reports available: confirm before launch]',
+  },
+  {
+    q: 'Where do you deliver?',
+    a: 'Anywhere in Calgary. [Areas outside Calgary: confirm]',
+  },
+  {
+    q: 'How does payment work?',
+    a: 'A [50%] deposit when you approve the final design, and the balance before delivery.',
+  },
+];
+
+const ph = (s: string) => s.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
+let n = 0;
+---
+<Base
+  title="How it works | Tera Food & Supply"
+  description="From first contact to delivery and reorders: how Tera designs, makes, ships, stores and delivers custom packaging for Calgary food businesses."
+>
+  <PageHero eyebrow="How it works" title="One call. We handle the rest.">
+    <p>
+      You never deal with a factory, a freight company or customs. Here's every step of a first order, so you know what
+      happens and when.
+    </p>
+    <p>
+      A first order takes about <span class="ph">[X–Y weeks]</span> from approval to delivery, mostly production and
+      ocean freight.
+    </p>
+  </PageHero>
+
+  <!-- The steps -->
+  <section class="section" aria-labelledby="steps-title">
+    <div class="container">
+      <h2 id="steps-title" class="visually-hidden">The ten steps of a first order</h2>
+      <div class="phases">
+        {phases.map((p) => (
+          <div class="phase">
+            <h3 class="phase__name">{p.name}</h3>
+            <ol class="steps" start={n + 1}>
+              {p.steps.map((s) => {
+                n += 1;
+                return (
+                  <li class="step">
+                    <span class="step__num" aria-hidden="true">{n}</span>
+                    <div class="step__body">
+                      <h4>{s.title}</h4>
+                      <p>{s.text}</p>
+                      {s.time && <p class="step__time" set:html={ph(s.time)} />}
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Reorders -->
+  <section class="section alt" aria-labelledby="reorder-title">
+    <div class="container two-col">
+      <div class="section-head">
+        <span class="eyebrow">After your first order</span>
+        <h2 id="reorder-title">Reorders, planned before you run out</h2>
+      </div>
+      <div class="reorder-copy">
+        <p>
+          Overseas production takes time, so we don't wait for you to run low. We keep an eye on how fast you go through
+          your stock and start the next production run early, so the new shipment lands in Calgary before the last one
+          runs out.
+        </p>
+        <p>
+          Your stock stays in our Calgary storage until you need it. Storage is included for
+          <span class="ph">[X months]</span>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you need -->
+  <section class="section" aria-labelledby="need-title">
+    <div class="container two-col">
+      <div class="section-head">
+        <span class="eyebrow">Getting started</span>
+        <h2 id="need-title">What to have ready</h2>
+        <p>Nothing has to be final. A rough idea is enough to start a quote.</p>
+      </div>
+      <ul class="checklist">
+        {getStarted.map((g) => <li>{g}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section alt" aria-labelledby="faq-title">
+    <div class="container faq-wrap">
+      <div class="section-head">
+        <span class="eyebrow">Questions</span>
+        <h2 id="faq-title">Good to know</h2>
+      </div>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p set:html={ph(f.a)} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Ready to start?" />
+</Base>
+
+<style>
+  .phases { display: grid; gap: clamp(2.5rem, 5vw, 3.5rem); }
+  .phase {
+    display: grid;
+    grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+    gap: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--tera-green);
+  }
+  .phase__name {
+    font-size: var(--step-2);
+    font-stretch: 115%;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .step { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1rem; align-items: start; }
+  .step__num {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    border: 2px solid var(--tera-green);
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--tera-green);
+  }
+  .step__body { display: grid; gap: 0.4rem; }
+  .step h4 {
+    margin: 0.35rem 0 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+    color: var(--ink);
+    line-height: 1.25;
+  }
+  .step p { color: var(--ink-muted); font-size: var(--step--1); }
+  .step__time {
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--line);
+    font-weight: 600;
+    color: var(--tera-green) !important;
+  }
+
+  .alt { background: var(--paper); border-block: 1px solid var(--line); }
+  .two-col {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .two-col .section-head { margin: 0; }
+  .reorder-copy { display: grid; gap: 1rem; font-size: var(--step-1); }
+
+  .checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 2px solid var(--tera-green); }
+  .checklist li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: var(--step-1);
+  }
+  .checklist li::before {
+    content: '';
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.3rem;
+    border: 2px solid var(--kraft);
+    border-radius: 3px;
+  }
+
+  .faq-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+  .faq-wrap .section-head { margin: 0; }
+  .faq { border-top: 2px solid var(--tera-green); }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    min-height: 44px;
+    padding: 1.1rem 0;
+    font-weight: 700;
+    font-size: var(--step-1);
+    color: var(--tera-green);
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: '+';
+    flex: none;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--kraft-text);
+  }
+  .faq details[open] summary::after { content: '–'; }
+  .faq details p { padding: 0 0 1.25rem; color: var(--ink-muted); }
+
+  @media (max-width: 1024px) {
+    .phase { grid-template-columns: 1fr; gap: 1.25rem; }
+    .faq-wrap { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .steps { grid-template-columns: 1fr; gap: 1.5rem; }
+    .two-col { grid-template-columns: 1fr; }
+  }
+</style>
