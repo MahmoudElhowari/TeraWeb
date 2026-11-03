@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
+import CtaBand from '../components/CtaBand.astro';
 
 const segments = [
   {
@@ -220,19 +221,7 @@ const reasons = [
     </div>
   </section>
 
-  <!-- Closing call to action -->
-  <section class="cta" aria-labelledby="cta-title">
-    <div class="container cta__inner">
-      <div class="cta__copy">
-        <h2 id="cta-title">Let's see your packaging.</h2>
-        <p>
-          Tell us what you serve and what you need. We'll reply with an all-in price per unit within
-          <span class="ph-light">[1–2 business days]</span>.
-        </p>
-      </div>
-      <a class="btn btn-cream" href="/quote/">Request a quote <span aria-hidden="true">→</span></a>
-    </div>
-  </section>
+  <CtaBand />
 </Base>
 
 <style>
@@ -421,22 +410,6 @@ const reasons = [
   .reasons li { display: grid; gap: 0.5rem; padding-top: 1rem; border-top: 2px solid var(--kraft); }
   .reasons p { color: var(--ink-muted); }
   .reasons li:last-child:nth-child(odd) { grid-column: 1 / -1; }
-
-  /* CTA */
-  .cta { background: var(--tera-green); color: var(--cream); }
-  .cta__inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    padding-block: clamp(3rem, 7vw, 5rem);
-  }
-  .cta__copy { display: grid; gap: 1rem; }
-  .cta h2 { color: var(--cream); font-size: var(--step-3); font-stretch: 125%; }
-  .cta p { color: #dfe7da; font-size: var(--step-1); max-width: 48ch; }
-  .cta :focus-visible { outline-color: var(--cream); }
-  .ph-light { color: #e6c18f; font-weight: 600; }
 
   /* Tablet */
   @media (max-width: 1024px) {

@@ -1,0 +1,393 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PhotoSlot from '../components/PhotoSlot.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const groups = [
+  {
+    id: 'takeout',
+    eyebrow: 'Takeout and food service',
+    title: 'Built to survive the trip',
+    intro:
+      'For restaurants, takeout spots and delivery kitchens. Packaging that handles heat, grease, stacking and a delivery bag, and still looks like your brand when it arrives.',
+    items: [
+      {
+        name: 'Food boxes and containers',
+        photo: 'Branded fold-and-lock takeout box holding a meal',
+        text: 'Fold-and-lock paper boxes that need no glue (some open flat into a plate), and moulded fibre bowls and multi-compartment trays.',
+        bestFor: 'Restaurants · grab-and-go',
+      },
+      {
+        name: 'Takeout and delivery bags',
+        photo: 'Kraft takeout bag with a printed logo and flat handles',
+        text: 'Kraft bags with wide gussets and flat handles that fit food containers properly, and tamper-evident sealed bags for delivery orders.',
+        bestFor: 'Takeout · delivery',
+      },
+      {
+        name: 'Soup cups and lids',
+        photo: 'Printed soup cup with a lid next to a bowl of soup',
+        text: 'Printed paper soup and noodle cups with matching lids, sized to your portions.',
+        bestFor: 'Soup and noodle shops',
+      },
+      {
+        name: 'Seals and stickers',
+        photo: 'Tamper-evident seal sticker closing a takeout bag',
+        text: 'Tamper-evident seal stickers that close a bag or box and show it hasn\'t been opened on the way.',
+        bestFor: 'Everyone · the easiest first order',
+      },
+    ],
+  },
+  {
+    id: 'bakery-cafe-retail',
+    eyebrow: 'Bakery, café and retail',
+    title: 'Made to be carried down the street',
+    intro:
+      'For cafés, bakeries, grocers and specialty food stores. A cup, bag or box people recognise, and shelf-ready packaging that helps sell the product.',
+    items: [
+      {
+        name: 'Cups, lids and sleeves',
+        photo: 'Printed double-wall coffee cup with a branded sleeve',
+        text: 'Double-wall printed paper cups, plastic-free (PE-free) coated cups, and printed sleeves.',
+        bestFor: 'Cafés · bakeries',
+      },
+      {
+        name: 'Bakery boxes and bags',
+        photo: 'Windowed pastry box and a bakery bag with a window',
+        text: 'Window boxes that show off baked goods, and bakery bags with windows.',
+        bestFor: 'Bakeries · cafés',
+      },
+      {
+        name: 'Product boxes and branded bags',
+        photo: 'Branded product box on a store shelf and a shopping bag',
+        text: 'Shelf-ready product boxes and branded carry bags for grocers and specialty food stores.',
+        bestFor: 'Grocers · specialty food',
+      },
+      {
+        name: 'Labels, wraps and deli paper',
+        photo: 'Product label with a QR code and a printed sandwich wrap',
+        text: 'Product labels with a QR code that links to your menu, reviews or reorders, plus printed wraps and deli paper.',
+        bestFor: 'Specialty food · delis · cafés',
+      },
+    ],
+  },
+];
+
+const designSteps = [
+  { title: 'We start from the dish', text: 'Its size and shape, how it travels, how it\'s opened and eaten.' },
+  { title: 'We design the whole look', text: 'Structure, inserts, compartments, print and finish. Not just a logo on a stock box.' },
+  { title: 'You approve a sample first', text: 'A pre-production sample is made and checked before the full run.' },
+];
+
+const materials = [
+  { name: 'Kraft and paperboard', use: 'Bags, boxes, sleeves' },
+  { name: 'Moulded fibre and bagasse', use: 'Bowls, trays, clamshell alternatives' },
+  { name: 'Plastic-free coated cups', use: 'Hot and cold cups' },
+];
+
+const tiers = [
+  { name: 'Starter', size: '[e.g. 1,000–2,999]', fit: 'New customers, single location, testing a design' },
+  { name: 'Standard', size: '[e.g. 3,000–9,999]', fit: 'Established shops with regular reorders' },
+  { name: 'Volume', size: '[e.g. 10,000+]', fit: 'Multi-location and high-volume businesses' },
+];
+---
+<Base
+  title="Custom packaging for restaurants, cafés and bakeries | Tera Food & Supply"
+  description="Custom-branded boxes, containers, bags, cups, sleeves, labels and wraps, designed around your menu. Takeout, bakery, café and retail packaging for Calgary food businesses."
+>
+  <PageHero eyebrow="Packaging" title="Made to your menu, not off the shelf.">
+    <p>
+      Every Tera order starts with your food, not a catalogue. The categories below are starting points. If your dish
+      needs something different, we'll design it.
+    </p>
+  </PageHero>
+
+  <!-- Jump links -->
+  <nav class="container jump" aria-label="On this page">
+    <a href="#takeout">Takeout and food service</a>
+    <a href="#bakery-cafe-retail">Bakery, café and retail</a>
+    <a href="#materials">Materials</a>
+    <a href="#pricing">Pricing and minimums</a>
+  </nav>
+
+  <!-- How we design -->
+  <section class="section section--tight" aria-labelledby="design-title">
+    <div class="container design">
+      <h2 id="design-title" class="visually-hidden">How we design your packaging</h2>
+      <ol class="design__steps">
+        {designSteps.map((d) => (
+          <li>
+            <h3>{d.title}</h3>
+            <p>{d.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  {groups.map((g, gi) => (
+    <section id={g.id} class:list={['section', 'group', { 'group--alt': gi % 2 === 0 }]} aria-labelledby={`${g.id}-title`}>
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">{g.eyebrow}</span>
+          <h2 id={`${g.id}-title`}>{g.title}</h2>
+          <p>{g.intro}</p>
+        </div>
+        <ul class="items">
+          {g.items.map((it) => (
+            <li class="item">
+              <PhotoSlot label={it.photo} ratio="4 / 3" />
+              <div class="item__body">
+                <h3>{it.name}</h3>
+                <p>{it.text}</p>
+                <p class="item__best"><span>Best for</span> {it.bestFor}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  ))}
+
+  <!-- Materials -->
+  <section id="materials" class="section group--alt" aria-labelledby="materials-title">
+    <div class="container two-col">
+      <div class="section-head">
+        <span class="eyebrow">Materials</span>
+        <h2 id="materials-title">Your choice on sustainability</h2>
+        <p>
+          Eco-friendly materials are offered on every product line, as a choice rather than a default. We'll explain the
+          cost and how each one performs with your food, so you can decide.
+        </p>
+        <p>
+          We only call a material compostable or recyclable when it's certified as such, and we'll show you the
+          paperwork. <span class="ph">[Food-contact test reports per material: confirm before launch]</span>
+        </p>
+      </div>
+      <ul class="materials">
+        {materials.map((m) => (
+          <li>
+            <h3>{m.name}</h3>
+            <p>{m.use}</p>
+          </li>
+        ))}
+        <li class="materials__note">
+          <h3>Standard materials too</h3>
+          <p>Sitting right next to the eco options, so you can compare.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="section" aria-labelledby="pricing-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Pricing and minimums</span>
+        <h2 id="pricing-title">One all-in price per unit</h2>
+        <p>
+          Your price includes design, production, freight, duties, inspection and the first delivery. You'll never see a
+          factory invoice or a customs bill. The more you order of an item, the lower the price per unit.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="tiers">
+          <caption class="visually-hidden">Quantity tiers</caption>
+          <thead>
+            <tr>
+              <th scope="col">Tier</th>
+              <th scope="col">Order size per item</th>
+              <th scope="col">Good for</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tiers.map((t) => (
+              <tr>
+                <th scope="row">{t.name}</th>
+                <td><span class="ph">{t.size}</span></td>
+                <td>{t.fit}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <dl class="facts">
+        <div><dt>Minimum order</dt><dd><span class="ph">[minimum order per item]</span></dd></div>
+        <div><dt>First order lead time</dt><dd>About <span class="ph">[X–Y weeks]</span>, mostly production and ocean freight</dd></div>
+        <div><dt>Design revisions</dt><dd><span class="ph">[2]</span> rounds included</dd></div>
+        <div><dt>Storage in Calgary</dt><dd>Included for <span class="ph">[X months]</span></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <CtaBand title="Not sure what you need?">
+    Tell us what's on your menu and how it's served. We'll suggest the right packaging and reply with an all-in price
+    within <span class="ph-light">[1–2 business days]</span>.
+  </CtaBand>
+</Base>
+
+<style>
+  .section--tight { padding-block: clamp(2.5rem, 5vw, 3.5rem); }
+
+  .jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--line);
+    font-weight: 600;
+    font-size: var(--step--1);
+  }
+  .jump a { padding-block: 0.4rem; }
+
+  .design__steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: d;
+  }
+  .design__steps li {
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+    padding-top: 1rem;
+    border-top: 2px solid var(--kraft);
+    counter-increment: d;
+  }
+  .design__steps h3::before {
+    content: counter(d) '. ';
+    color: var(--kraft-text);
+  }
+  .design__steps p { color: var(--ink-muted); }
+
+  .group { scroll-margin-top: 1rem; }
+  .group--alt { background: var(--paper); border-block: 1px solid var(--line); }
+
+  .items {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-block: 2px solid var(--tera-green);
+  }
+  .item {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+    padding: 1.25rem;
+    border-right: 1px solid var(--line);
+    min-width: 0;
+  }
+  .item:last-child { border-right: none; }
+  .item__body { display: grid; gap: 0.6rem; grid-template-rows: auto 1fr auto; }
+  .item__body > p:first-of-type { font-size: var(--step--1); color: var(--ink); }
+  .item__best {
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--line);
+  }
+  .item__best span {
+    display: block;
+    font-family: var(--font-display);
+    font-stretch: 125%;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--kraft-text);
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .two-col .section-head { margin: 0; }
+  .materials {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .materials li {
+    display: grid;
+    gap: 0.35rem;
+    align-content: start;
+    padding: 1.25rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .materials p { font-size: var(--step--1); color: var(--ink-muted); }
+  .materials__note { background: transparent !important; border-style: dashed !important; }
+
+  .table-wrap { overflow-x: auto; }
+  .tiers {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 2px solid var(--tera-green);
+    font-size: var(--step-0);
+  }
+  .tiers th,
+  .tiers td {
+    text-align: left;
+    padding: 1rem 1.25rem 1rem 0;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .tiers thead th {
+    font-family: var(--font-display);
+    font-stretch: 125%;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .tiers tbody th {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--tera-green);
+    white-space: nowrap;
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0 0;
+  }
+  .facts div { display: grid; gap: 0.35rem; align-content: start; }
+  .facts dt { font-weight: 700; color: var(--tera-green); }
+  .facts dd { margin: 0; font-size: var(--step--1); color: var(--ink-muted); }
+
+  @media (max-width: 1024px) {
+    .items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .item:nth-child(2) { border-right: none; }
+    .item:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+    .two-col { grid-template-columns: 1fr; }
+    .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 760px) {
+    .design__steps { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
+  @media (max-width: 560px) {
+    .items { grid-template-columns: 1fr; }
+    .item { border-right: none; border-bottom: 1px solid var(--line); padding-inline: 0; }
+    .item:last-child { border-bottom: none; }
+    .materials { grid-template-columns: 1fr; }
+    .facts { grid-template-columns: 1fr; }
+  }
+</style>

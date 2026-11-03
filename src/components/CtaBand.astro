@@ -1,0 +1,37 @@
+---
+interface Props {
+  title?: string;
+}
+const { title = "Let's see your packaging." } = Astro.props;
+---
+<section class="cta" aria-labelledby="cta-title">
+  <div class="container cta__inner">
+    <div class="cta__copy">
+      <h2 id="cta-title">{title}</h2>
+      <p>
+        <slot>
+          Tell us what you serve and what you need. We'll reply with an all-in price per unit within
+          <span class="ph-light">[1–2 business days]</span>.
+        </slot>
+      </p>
+    </div>
+    <a class="btn btn-cream" href="/quote/">Request a quote <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<style>
+  .cta { background: var(--tera-green); color: var(--cream); }
+  .cta__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-block: clamp(3rem, 7vw, 5rem);
+  }
+  .cta__copy { display: grid; gap: 1rem; }
+  .cta h2 { color: var(--cream); font-size: var(--step-3); font-stretch: 125%; }
+  .cta p { color: #dfe7da; font-size: var(--step-1); max-width: 48ch; }
+  .cta :focus-visible { outline-color: var(--cream); }
+  .cta :global(.ph-light) { color: #e6c18f; font-weight: 600; }
+</style>
