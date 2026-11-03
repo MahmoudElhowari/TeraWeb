@@ -1,0 +1,205 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PhotoSlot from '../components/PhotoSlot.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const values = [
+  {
+    title: 'Better than standard',
+    text: "We bring packaging ideas you haven't seen from local suppliers.",
+  },
+  {
+    title: 'One point of contact',
+    text: 'You never have to deal with a factory, a freight company or customs.',
+  },
+  {
+    title: 'Honest timelines',
+    text: 'Overseas production takes time. We say so up front and plan reorders early so nobody runs out.',
+  },
+  {
+    title: 'Choice on sustainability',
+    text: 'Eco-friendly materials are always on the table, explained clearly and never oversold.',
+  },
+  {
+    title: 'We know the kitchen',
+    text: "We've worked in restaurants, so we design for real service: grease, heat, stacking, delivery drivers and busy counters.",
+  },
+];
+---
+<Base
+  title="About us | Tera Food & Supply"
+  description="Tera Food & Supply was started by two partners with years in Calgary's restaurant industry, to give food businesses packaging as good as their food."
+>
+  <PageHero eyebrow="About us" title="Grounded in good food, built to move.">
+    <p>
+      Tera Food &amp; Supply was started by two partners with years of experience in Calgary's restaurant industry.
+    </p>
+  </PageHero>
+
+  <!-- Story -->
+  <section class="section" aria-labelledby="story-title">
+    <div class="container story">
+      <div class="story__copy">
+        <h2 id="story-title">Why we started</h2>
+        <p>
+          We kept seeing great food handed over in the same generic boxes and bags, and we knew it didn't have to be
+          that way.
+        </p>
+        <p>
+          From inside the industry, we also saw what happens when a business orders custom packaging straight from a
+          manufacturer. It looks beautiful and customers notice it. But getting there takes time most owners don't have:
+          finding a factory, preparing artwork, approving samples, arranging shipping and clearing customs.
+        </p>
+        <p>
+          So we built a company that does all of that for you. We design custom packaging around each menu, have it
+          made by trusted manufacturers, and handle everything in between: freight, customs, storage and delivery.
+        </p>
+        <p class="story__sign">You focus on the food. We'll make sure it arrives looking like your brand.</p>
+      </div>
+      <PhotoSlot
+        tone="kraft"
+        ratio="4 / 5"
+        label="The founders at work: hands checking a packaging sample on a kitchen counter (no faces needed)"
+      />
+    </div>
+  </section>
+
+  <!-- Name and mark -->
+  <section class="section alt" aria-labelledby="name-title">
+    <div class="container name">
+      <img class="name__mark" src="/favicon.svg" alt="" width="100" height="132" loading="lazy" />
+      <div class="name__copy">
+        <span class="eyebrow">The name</span>
+        <h2 id="name-title">Tera, from terra</h2>
+        <p>
+          Tera reads as <em>terra</em>, Latin for earth. Our logo tells the rest of the story.
+        </p>
+        <dl class="name__parts">
+          <div>
+            <dt><span class="dot dot--leaf" aria-hidden="true"></span>The leaf</dt>
+            <dd>Grounded in good food and natural materials.</dd>
+          </div>
+          <div>
+            <dt><span class="dot dot--arrow" aria-hidden="true"></span>The arrow</dt>
+            <dd>Movement. Sourced, shipped and delivered.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section" aria-labelledby="values-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What we believe</span>
+        <h2 id="values-title">How we work</h2>
+      </div>
+      <ul class="values">
+        {values.map((v) => (
+          <li>
+            <h3>{v.title}</h3>
+            <p>{v.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Where -->
+  <section class="section alt" aria-labelledby="where-title">
+    <div class="container where">
+      <div class="section-head">
+        <span class="eyebrow">Where we work</span>
+        <h2 id="where-title">Here in Calgary</h2>
+      </div>
+      <p>
+        We serve restaurants, cafés, bakeries, grocers and specialty food stores across Calgary. We'll come to you with
+        samples, and your stock is stored and delivered locally.
+        <span class="ph">[Areas outside Calgary: confirm]</span>
+      </p>
+    </div>
+  </section>
+
+  <CtaBand title="Let's talk about your packaging." />
+</Base>
+
+<style>
+  .story {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .story__copy { display: grid; gap: 1.25rem; font-size: var(--step-1); }
+  .story__copy h2 { margin-bottom: 0.25rem; }
+  .story__sign {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-stretch: 110%;
+    color: var(--tera-green);
+    padding-top: 1.25rem;
+    border-top: 2px solid var(--kraft);
+  }
+
+  .alt { background: var(--paper); border-block: 1px solid var(--line); }
+
+  .name {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+  }
+  .name__mark { width: clamp(96px, 14vw, 170px); }
+  .name__copy { display: grid; gap: 1rem; }
+  .name__copy > p { font-size: var(--step-1); color: var(--ink-muted); }
+  .name__parts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin: 0.5rem 0 0;
+  }
+  .name__parts div { padding-top: 1rem; border-top: 1px solid var(--line); }
+  .name__parts dt { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; color: var(--tera-green); }
+  .name__parts dd { margin: 0.35rem 0 0; color: var(--ink-muted); }
+  .dot { width: 14px; height: 14px; border-radius: 50%; flex: none; }
+  .dot--leaf { background: var(--fresh-leaf); }
+  .dot--arrow { background: var(--kraft); }
+
+  .values {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 2rem 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .values li { grid-column: span 2; }
+  .values li:nth-child(n + 4) { grid-column: span 3; }
+  .values li { display: grid; gap: 0.5rem; align-content: start; padding-top: 1rem; border-top: 2px solid var(--kraft); }
+  .values p { color: var(--ink-muted); }
+
+  .where {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .where .section-head { margin: 0; }
+  .where > p { font-size: var(--step-1); }
+
+  @media (max-width: 900px) {
+    .values { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .values li, .values li:nth-child(n + 4) { grid-column: auto; }
+    .values li:last-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 760px) {
+    .story, .where { grid-template-columns: 1fr; }
+    .name { grid-template-columns: 1fr; }
+    .name__parts { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .values { grid-template-columns: 1fr; }
+  }
+</style>
