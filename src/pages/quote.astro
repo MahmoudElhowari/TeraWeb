@@ -44,13 +44,13 @@ const quantities = [
         method="POST"
         action="/quote/thanks/"
         data-netlify="true"
-        netlify-honeypot="company-website"
+        netlify-honeypot="bot-field"
         enctype="multipart/form-data"
         class="form"
       >
         <input type="hidden" name="form-name" value="quote" />
         <p class="visually-hidden" aria-hidden="true">
-          <label>Leave this field empty <input name="company-website" tabindex="-1" autocomplete="off" /></label>
+          <label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
         </p>
 
         <p class="form__note">Fields marked <span aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
