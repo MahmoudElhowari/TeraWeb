@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
 import PhotoSlot from '../components/PhotoSlot.astro';
+import heroImage from '../assets/hero-packaging-set.jpg';
 import CtaBand from '../components/CtaBand.astro';
 
 const segments = [
@@ -113,11 +115,14 @@ const reasons = [
       </p>
     </div>
     <div class="hero__media">
-      <PhotoSlot
-        tone="kraft"
-        ratio="auto"
+      <Image
+        src={heroImage}
+        alt="A sample set of custom-branded café and bakery packaging in deep green and cream: coffee cups, a cup carrier, paper bags, a shopping bag, pastry boxes and stickers on a marble counter"
         class="hero__photo"
-        label="A full set of one customer's branded takeout packaging on a restaurant counter, natural light"
+        widths={[480, 768, 1024]}
+        sizes="(max-width: 760px) 100vw, 50vw"
+        loading="eager"
+        fetchpriority="high"
       />
     </div>
   </section>
@@ -272,7 +277,8 @@ const reasons = [
     background: var(--kraft);
   }
   .hero__media { border-left: 8px solid var(--tera-green); display: flex; }
-  .hero__media :global(.hero__photo) { min-height: 100%; border: none; }
+  .hero__media { position: relative; overflow: hidden; }
+  .hero__photo { width: 100%; height: 100%; min-height: 100%; object-fit: cover; object-position: center 70%; display: block; }
 
   /* Segments */
   .segments {
@@ -440,7 +446,8 @@ const reasons = [
   @media (max-width: 760px) {
     .hero { grid-template-columns: 1fr; min-height: 0; }
     .hero__copy { padding: 2.5rem var(--gutter); }
-    .hero__media { border-left: none; border-top: 8px solid var(--tera-green); min-height: 260px; }
+    .hero__media { border-left: none; border-top: 8px solid var(--tera-green); min-height: 0; }
+    .hero__photo { aspect-ratio: 4 / 3; height: auto; }
     .hero__actions .btn { flex: 1 1 100%; }
 
     .segments { grid-template-columns: 1fr; }
