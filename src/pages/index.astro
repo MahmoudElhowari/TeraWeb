@@ -19,20 +19,25 @@ const segments = [
     need: 'Shelf-ready packaging and labels that help sell the product.',
     items: 'Product boxes, labels, wraps, branded bags',
   },
+  {
+    name: 'Retail stores and pharmacies',
+    need: 'A bag and box that carry your name out the door with every purchase.',
+    items: 'Shopping bags, pharmacy and prescription bags, gift boxes, tissue, stickers',
+  },
 ];
 
 const categories = [
   {
     name: 'Boxes and containers',
     photo: 'Branded fold-and-lock takeout box and a windowed pastry box',
-    formats: ['Fold-and-lock paper boxes', 'Fibre bowls and compartment trays', 'Window boxes for baked goods'],
+    formats: ['Fold-and-lock paper boxes', 'Fibre bowls and compartment trays', 'Window boxes for baked goods', 'Gift and retail boxes'],
     bestFor: 'Restaurants · bakeries · grab-and-go',
   },
   {
     name: 'Bags',
     photo: 'Kraft takeout bag with a printed logo and flat handles',
-    formats: ['Wide-gusset kraft takeout bags', 'Sealed delivery bags', 'Bakery bags with windows'],
-    bestFor: 'Takeout · delivery · grocers',
+    formats: ['Wide-gusset kraft takeout bags', 'Sealed delivery bags', 'Bakery bags with windows', 'Shopping and pharmacy bags'],
+    bestFor: 'Takeout · delivery · grocers · shops',
   },
   {
     name: 'Cups, lids and sleeves',
@@ -81,8 +86,8 @@ const reasons = [
 ];
 ---
 <Base
-  title="Tera Food & Supply | Custom food packaging in Calgary"
-  description="Custom-branded boxes, bags, cups and labels for Calgary restaurants, cafés, bakeries and food shops. Designed by us, made by our manufacturers, stored and delivered in Calgary."
+  title="Tera Food & Supply | Custom food and retail packaging in Calgary"
+  description="Custom-branded boxes, bags, cups and labels for Calgary restaurants, cafés, bakeries, food shops, retail stores and pharmacies. Designed by us, made by our manufacturers, stored and delivered in Calgary."
 >
   <!-- Hero -->
   <section class="hero" aria-labelledby="hero-title">
@@ -102,6 +107,10 @@ const reasons = [
         <li>One all-in price per unit</li>
         <li>Stored and delivered in Calgary</li>
       </ul>
+      <p class="hero__more">
+        Not a food business? We also make branded bags and boxes for
+        <a href="/packaging/#retail">retail stores and pharmacies</a>.
+      </p>
     </div>
     <div class="hero__media">
       <PhotoSlot
@@ -118,7 +127,7 @@ const reasons = [
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Who we work with</span>
-        <h2 id="who-title">Built for independent food businesses</h2>
+        <h2 id="who-title">Built for independent food businesses, and the shops next door</h2>
         <p>
           Owner-run spots with one to five locations, a brand they're proud of, and generic packaging today.
         </p>
@@ -144,7 +153,7 @@ const reasons = [
           <h2 id="packaging-title">Everything that leaves your counter</h2>
           <p>
             We start from the dish: its size, how it travels and how it's eaten. Then we design the box around it.
-            These four categories are starting points, not limits.
+            For shops and pharmacies, we start from what you sell. These four categories are starting points, not limits.
           </p>
         </div>
         <a class="btn btn-outline" href="/packaging/">See all packaging</a>
@@ -254,6 +263,8 @@ const reasons = [
     font-weight: 600;
     color: var(--tera-green);
   }
+  .hero__more { font-size: var(--step--1); color: var(--ink-muted); }
+  .hero__more a { font-weight: 700; }
   .hero__facts li { display: flex; align-items: center; gap: 0.5rem; }
   .hero__facts li::before {
     content: '';
@@ -266,7 +277,7 @@ const reasons = [
   /* Segments */
   .segments {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0;
     list-style: none;
     margin: 0;
@@ -310,7 +321,7 @@ const reasons = [
   }
   .spec:last-child { border-right: none; }
   .spec__body { display: grid; gap: 0.75rem; grid-template-rows: auto 1fr auto; }
-  .spec__formats { margin: 0; padding-left: 1.1rem; font-size: var(--step--1); display: grid; gap: 0.3rem; }
+  .spec__formats { margin: 0; padding-left: 1.1rem; font-size: var(--step--1); display: grid; gap: 0.3rem; align-content: start; }
   .spec__formats li::marker { color: var(--kraft); }
   .spec__best {
     font-size: 0.8125rem;
@@ -414,6 +425,9 @@ const reasons = [
 
   /* Tablet */
   @media (max-width: 1024px) {
+    .segments { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .segment + .segment:nth-child(odd) { padding-left: 0; border-left: none; }
+    .segment:nth-child(n + 3) { border-top: 1px solid var(--line); }
     .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .spec:nth-child(2) { border-right: none; }
     .spec:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
