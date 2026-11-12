@@ -9,7 +9,7 @@ const path = Astro.url.pathname;
 <header class="site-header">
   <div class="container site-header__inner">
     <a href="/" class="site-header__logo">
-      <img src="/brand/tera-logo.svg" alt="Tera Food & Supply, home" width="356" height="152" />
+      <img src="/brand/tera-logo-reversed.svg" alt="Tera Food & Supply, home" width="356" height="152" />
     </a>
 
     <nav class="site-nav" aria-label="Main">
@@ -20,7 +20,7 @@ const path = Astro.url.pathname;
       </ul>
     </nav>
 
-    <a href="/quote/" class="btn btn-green site-header__cta">Request a quote</a>
+    <a href="/quote/" class="btn btn-line site-header__cta">Request a quote</a>
 
     <details class="mobile-nav">
       <summary aria-label="Menu">
@@ -30,7 +30,7 @@ const path = Astro.url.pathname;
       <nav aria-label="Main, mobile">
         <ul>
           {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
-          <li><a href="/quote/" class="btn btn-green">Request a quote</a></li>
+          <li><a href="/quote/" class="btn btn-kraft">Request a quote</a></li>
         </ul>
       </nav>
     </details>
@@ -39,8 +39,9 @@ const path = Astro.url.pathname;
 
 <style>
   .site-header {
-    background: var(--cream);
-    border-bottom: 1px solid var(--line);
+    background: var(--night);
+    color: var(--on-night);
+    border-bottom: 1px solid rgba(244, 241, 234, 0.1);
     position: relative;
     z-index: 10;
   }
@@ -48,23 +49,25 @@ const path = Astro.url.pathname;
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    min-height: 76px;
+    min-height: 84px;
   }
   .site-header__logo { flex: none; margin-right: auto; }
-  .site-header__logo img { width: 128px; }
+  .site-header__logo img { width: 124px; }
 
-  .site-nav ul { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+  .site-nav ul { display: flex; gap: 2.25rem; list-style: none; margin: 0; padding: 0; }
   .site-nav a {
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 0.9375rem;
     text-decoration: none;
-    color: var(--ink);
+    color: var(--on-night);
     padding-block: 0.5rem;
     border-bottom: 2px solid transparent;
   }
   .site-nav a:hover,
-  .site-nav a[aria-current='page'] { color: var(--tera-green); border-bottom-color: var(--kraft); }
+  .site-nav a[aria-current='page'] { color: var(--white); border-bottom-color: var(--kraft-gold); }
+  .site-header :focus-visible { outline-color: var(--kraft-glow); }
 
-  .site-header__cta { min-height: 44px; padding-inline: 1.1rem; }
+  .site-header__cta { min-height: 44px; padding-inline: 1.1rem; font-size: 0.9375rem; border-width: 1px; }
 
   .mobile-nav { display: none; position: relative; }
   .mobile-nav summary {
@@ -74,9 +77,9 @@ const path = Astro.url.pathname;
     gap: 0.5rem;
     min-height: 44px;
     padding: 0 0.75rem;
-    border: 2px solid var(--tera-green);
-    border-radius: var(--radius);
-    color: var(--tera-green);
+    border: 1px solid rgba(244, 241, 234, 0.35);
+    border-radius: 3px;
+    color: var(--on-night);
     font-weight: 700;
     cursor: pointer;
   }
@@ -88,10 +91,10 @@ const path = Astro.url.pathname;
     right: 0;
     top: calc(100% + 0.75rem);
     width: min(80vw, 300px);
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    box-shadow: 0 12px 30px rgba(28, 42, 32, 0.12);
+    background: var(--night-deep);
+    border: 1px solid rgba(244, 241, 234, 0.14);
+    border-radius: 4px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
     padding: 0.5rem;
   }
   .mobile-nav ul { list-style: none; margin: 0; padding: 0; display: grid; }
@@ -100,8 +103,8 @@ const path = Astro.url.pathname;
     padding: 0.85rem 0.75rem;
     font-weight: 600;
     text-decoration: none;
-    color: var(--ink);
-    border-bottom: 1px solid var(--line);
+    color: var(--on-night);
+    border-bottom: 1px solid rgba(244, 241, 234, 0.12);
   }
   .mobile-nav li:last-child { padding: 0.75rem 0.25rem 0.25rem; }
   .mobile-nav .btn { width: 100%; }
