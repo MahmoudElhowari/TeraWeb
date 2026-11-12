@@ -4,7 +4,7 @@ interface Props {
 }
 const { title = "Let's see your packaging." } = Astro.props;
 ---
-<section class="cta" aria-labelledby="cta-title">
+<section class="cta on-night" aria-labelledby="cta-title">
   <div class="container cta__inner">
     <div class="cta__copy">
       <h2 id="cta-title">{title}</h2>
@@ -15,23 +15,21 @@ const { title = "Let's see your packaging." } = Astro.props;
         </slot>
       </p>
     </div>
-    <a class="btn btn-cream" href="/quote/">Request a quote <span aria-hidden="true">→</span></a>
+    <a class="btn btn-kraft" href="/quote/">Request a quote <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
 <style>
-  .cta { background: var(--tera-green); color: var(--cream); }
+  .cta { border-top: 1px solid var(--night-line); }
   .cta__inner {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-    padding-block: clamp(3rem, 7vw, 5rem);
+    padding-block: clamp(4rem, 9vw, 6.5rem);
   }
   .cta__copy { display: grid; gap: 1rem; }
-  .cta h2 { color: var(--cream); font-size: var(--step-3); font-stretch: 125%; }
-  .cta p { color: #dfe7da; font-size: var(--step-1); max-width: 48ch; }
-  .cta :focus-visible { outline-color: var(--cream); }
-  .cta :global(.ph-light) { color: #e6c18f; font-weight: 600; }
+  .cta p { font-size: var(--step-1); max-width: 48ch; }
+  .cta :global(.ph-light) { color: var(--kraft-glow); font-weight: 600; }
 </style>

@@ -1,8 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import { Image } from 'astro:assets';
-import PhotoSlot from '../components/PhotoSlot.astro';
 import heroImage from '../assets/hero-packaging-set.jpg';
+import boxesImage from '../assets/flower-bowl-white.jpg';
+import bagsImage from '../assets/kraft-bag-marble.jpg';
+import cupsImage from '../assets/cups-kraft-tone-pair.jpg';
+import wrapsImage from '../assets/sandwich-kraft-wrap-string.jpg';
+import retailImage from '../assets/kraft-bag-grey.jpg';
 import CtaBand from '../components/CtaBand.astro';
 
 const segments = [
@@ -21,35 +25,34 @@ const segments = [
     need: 'Shelf-ready packaging and labels that help sell the product.',
     items: 'Product boxes, labels, wraps, branded bags',
   },
-  {
-    name: 'Retail stores and pharmacies',
-    need: 'A bag and box that carry your name out the door with every purchase.',
-    items: 'Shopping bags, pharmacy and prescription bags, gift boxes, tissue, stickers',
-  },
 ];
 
 const categories = [
   {
     name: 'Boxes and containers',
-    photo: 'Branded fold-and-lock takeout box and a windowed pastry box',
+    image: boxesImage,
+    alt: 'A white fold-out paper bowl opened flat on a warm yellow backdrop',
     formats: ['Fold-and-lock paper boxes', 'Fibre bowls and compartment trays', 'Window boxes for baked goods', 'Gift and retail boxes'],
     bestFor: 'Restaurants · bakeries · grab-and-go',
   },
   {
     name: 'Bags',
-    photo: 'Kraft takeout bag with a printed logo and flat handles',
+    image: bagsImage,
+    alt: 'A plain kraft paper bag with flat handles on a marble counter',
     formats: ['Wide-gusset kraft takeout bags', 'Sealed delivery bags', 'Bakery bags with windows', 'Shopping and pharmacy bags'],
     bestFor: 'Takeout · delivery · grocers · shops',
   },
   {
     name: 'Cups, lids and sleeves',
-    photo: 'Printed double-wall coffee cup with a branded sleeve',
+    image: cupsImage,
+    alt: 'Two kraft-tone double-wall coffee cups with cream lids on a green backdrop',
     formats: ['Double-wall printed cups', 'Plastic-free coated cups', 'Printed sleeves and soup cups'],
     bestFor: 'Cafés · bakeries · soup and noodle shops',
   },
   {
     name: 'Labels, stickers and wraps',
-    photo: 'Seal sticker on a bag and a printed sandwich wrap',
+    image: wrapsImage,
+    alt: 'A sandwich wrapped in kraft paper and tied with string',
     formats: ['Tamper-evident seal stickers', 'Printed wraps and deli paper', 'Product labels with a QR code'],
     bestFor: 'Everyone · the easiest first order',
   },
@@ -92,60 +95,79 @@ const reasons = [
   description="Custom-branded boxes, bags, cups and labels for Calgary restaurants, cafés, bakeries, food shops, retail stores and pharmacies. Designed by us, made by our manufacturers, stored and delivered in Calgary."
 >
   <!-- Hero -->
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero__copy">
-      <span class="eyebrow">Custom packaging · Calgary</span>
-      <h1 id="hero-title">Packaging as good as your food.</h1>
-      <p class="hero__lede">
-        Custom packaging made for your menu: designed by us, made by our manufacturers, and stored and
-        delivered here in Calgary.
-      </p>
-      <div class="hero__actions">
-        <a class="btn btn-primary" href="/quote/">Request a quote <span aria-hidden="true">→</span></a>
-        <a class="btn btn-outline" href="/how-it-works/">See how it works</a>
+  <section class="hero on-night" aria-labelledby="hero-title">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow rise">Custom packaging · Calgary</span>
+        <h1 id="hero-title" class="rise rise-2">Packaging as good as <span class="accent">your food.</span></h1>
+        <p class="hero__lede rise rise-3">
+          Custom packaging made for your menu: designed by us, made by our manufacturers, and stored and
+          delivered here in Calgary.
+        </p>
+        <div class="hero__actions rise rise-3">
+          <a class="btn btn-kraft" href="/quote/">Request a quote <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="/how-it-works/">See how it works</a>
+        </div>
       </div>
+      <figure class="hero__media rise rise-2">
+        <Image
+          src={heroImage}
+          alt="A sample set of custom-branded café and bakery packaging in deep green and cream: coffee cups, a cup carrier, paper bags, a shopping bag, pastry boxes and stickers on a marble counter"
+          class="hero__photo"
+          widths={[480, 768, 1024]}
+          sizes="(max-width: 860px) 100vw, 50vw"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <figcaption>A sample café and bakery set</figcaption>
+      </figure>
+    </div>
+    <div class="container">
       <ul class="hero__facts">
         <li>Design included</li>
         <li>One all-in price per unit</li>
         <li>Stored and delivered in Calgary</li>
       </ul>
-      <p class="hero__more">
-        Not a food business? We also make branded bags and boxes for
-        <a href="/packaging/#retail">retail stores and pharmacies</a>.
-      </p>
-    </div>
-    <div class="hero__media">
-      <Image
-        src={heroImage}
-        alt="A sample set of custom-branded café and bakery packaging in deep green and cream: coffee cups, a cup carrier, paper bags, a shopping bag, pastry boxes and stickers on a marble counter"
-        class="hero__photo"
-        widths={[480, 768, 1024]}
-        sizes="(max-width: 760px) 100vw, 50vw"
-        loading="eager"
-        fetchpriority="high"
-      />
     </div>
   </section>
 
   <!-- Who we work with -->
-  <section class="section" aria-labelledby="who-title">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Who we work with</span>
-        <h2 id="who-title">Built for independent food businesses, and the shops next door</h2>
-        <p>
-          Owner-run spots with one to five locations, a brand they're proud of, and generic packaging today.
-        </p>
+  <section class="section who" aria-labelledby="who-title">
+    <div class="container who__grid">
+      <div class="who__main">
+        <div class="section-head">
+          <span class="eyebrow">Who we work with</span>
+          <h2 id="who-title">Built for independent food businesses</h2>
+          <p>Owner-run spots with one to five locations, a brand they're proud of, and generic packaging today.</p>
+        </div>
+        <ul class="segments">
+          {segments.map((s) => (
+            <li class="segment">
+              <h3>{s.name}</h3>
+              <div>
+                <p>{s.need}</p>
+                <p class="segment__items"><span class="visually-hidden">Typical items: </span>{s.items}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul class="segments">
-        {segments.map((s) => (
-          <li class="segment">
-            <h3>{s.name}</h3>
-            <p>{s.need}</p>
-            <p class="segment__items"><span class="visually-hidden">Typical items: </span>{s.items}</p>
-          </li>
-        ))}
-      </ul>
+      <aside class="lane" aria-labelledby="lane-title">
+        <Image
+          src={retailImage}
+          alt="A small plain kraft shopping bag with twisted paper handles on a grey backdrop"
+          class="lane__photo"
+          widths={[400, 720]}
+          sizes="(max-width: 860px) 100vw, 380px"
+        />
+        <div class="lane__body">
+          <span class="eyebrow">Also for</span>
+          <h3 id="lane-title">Retail stores and pharmacies</h3>
+          <p>A bag and box that carry your name out the door with every purchase.</p>
+          <p class="segment__items">Shopping bags, pharmacy and prescription bags, gift boxes, tissue, stickers</p>
+          <a class="text-link" href="/packaging/#retail">Retail packaging <span aria-hidden="true">→</span></a>
+        </div>
+      </aside>
     </div>
   </section>
 
@@ -167,14 +189,12 @@ const reasons = [
       <ul class="specs">
         {categories.map((c) => (
           <li class="spec">
-            <PhotoSlot label={c.photo} ratio="4 / 3" />
-            <div class="spec__body">
-              <h3>{c.name}</h3>
-              <ul class="spec__formats">
-                {c.formats.map((f) => <li>{f}</li>)}
-              </ul>
-              <p class="spec__best"><span>Best for</span> {c.bestFor}</p>
-            </div>
+            <Image src={c.image} alt={c.alt} class="spec__photo" widths={[360, 600]} sizes="(max-width: 560px) 100vw, (max-width: 1024px) 50vw, 300px" />
+            <h3>{c.name}</h3>
+            <ul class="spec__formats">
+              {c.formats.map((f) => <li>{f}</li>)}
+            </ul>
+            <p class="spec__best"><span>Best for</span> {c.bestFor}</p>
           </li>
         ))}
       </ul>
@@ -182,9 +202,9 @@ const reasons = [
   </section>
 
   <!-- How it works -->
-  <section class="section" aria-labelledby="how-title">
+  <section class="section how on-night" aria-labelledby="how-title">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head how__head">
         <span class="eyebrow">How it works</span>
         <h2 id="how-title">One call. We handle the rest.</h2>
         <p>
@@ -194,8 +214,9 @@ const reasons = [
       </div>
 
       <ol class="route">
-        {route.map((r) => (
+        {route.map((r, i) => (
           <li class="route__stop">
+            <span class="route__no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <h3>{r.name}</h3>
             <p>{r.text}</p>
           </li>
@@ -207,7 +228,7 @@ const reasons = [
           <strong>Then reorders take care of themselves.</strong> We watch your stock and start the next production run
           early, so a new shipment lands before you run out.
         </p>
-        <a href="/how-it-works/">See every step <span aria-hidden="true">→</span></a>
+        <a class="text-link" href="/how-it-works/">See every step <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -222,7 +243,7 @@ const reasons = [
           Tera was started by two partners with years in Calgary's restaurant industry. We kept seeing great food handed
           over in the same generic boxes and bags, and knew it didn't have to be that way.
         </p>
-        <a href="/about/">About us <span aria-hidden="true">→</span></a>
+        <a class="text-link" href="/about/">About us <span aria-hidden="true">→</span></a>
       </div>
       <ul class="reasons">
         {reasons.map((r) => (
@@ -240,67 +261,88 @@ const reasons = [
 
 <style>
   /* Hero */
-  .hero {
+  .hero { padding-block: clamp(2.5rem, 6vw, 5rem) 0; overflow: hidden; }
+  .hero__grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-    margin-inline: auto;
-    min-height: min(640px, 80vh);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
   }
-  .hero__copy {
-    display: grid;
-    align-content: center;
-    gap: 1.5rem;
-    padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 4vw, 4rem) clamp(3rem, 7vw, 6rem) max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
-  }
-  .hero__copy { min-width: 0; }
+  .hero__copy { display: grid; gap: 1.6rem; min-width: 0; }
   .hero__copy h1 { overflow-wrap: break-word; }
-  .hero__lede { font-size: var(--step-1); color: var(--ink-muted); max-width: 44ch; }
-  .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .hero__lede { font-size: var(--step-1); max-width: 40ch; }
+  .hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.75rem; margin-top: 0.25rem; }
+  .hero__media { margin: 0; position: relative; }
+  .hero__photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5 / 4.4;
+    object-fit: cover;
+    object-position: 55% 60%;
+    border-radius: 2px;
+    box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+  }
+  .hero__media figcaption {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    padding: 0.35rem 0.7rem;
+    background: rgba(22, 43, 29, 0.82);
+    color: var(--on-night);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border-radius: 2px;
+  }
   .hero__facts {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
+    gap: 0.75rem 2.5rem;
     list-style: none;
-    margin: 0.5rem 0 0;
-    padding: 1.25rem 0 0;
-    border-top: 1px solid var(--line);
+    margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+    padding: 1.4rem 0;
+    border-top: 1px solid var(--night-line);
     font-size: var(--step--1);
-    font-weight: 600;
-    color: var(--tera-green);
+    font-weight: 500;
+    color: var(--on-night-muted);
   }
-  .hero__more { font-size: var(--step--1); color: var(--ink-muted); }
-  .hero__more a { font-weight: 700; }
-  .hero__facts li { display: flex; align-items: center; gap: 0.5rem; }
+  .hero__facts li { display: flex; align-items: center; gap: 0.65rem; }
   .hero__facts li::before {
     content: '';
-    width: 14px; height: 2px;
-    background: var(--kraft);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--kraft-gold);
   }
-  .hero__media { border-left: 8px solid var(--tera-green); display: flex; }
-  .hero__media { position: relative; overflow: hidden; }
-  .hero__photo { width: 100%; height: 100%; min-height: 100%; object-fit: cover; object-position: center 70%; display: block; }
 
-  /* Segments */
-  .segments {
+  /* Who we work with */
+  .who__grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    border-top: 2px solid var(--tera-green);
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+    align-items: start;
   }
+  .who__main .section-head { margin-bottom: 2rem; }
+  .segments { list-style: none; margin: 0; padding: 0; }
   .segment {
     display: grid;
-    gap: 0.75rem;
-    align-content: start;
-    padding: 1.75rem 1.75rem 1.75rem 0;
+    grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+    gap: 0.5rem 2rem;
+    padding: 1.4rem 0;
+    border-top: 1px solid var(--line);
   }
-  .segment + .segment { padding-left: 1.75rem; border-left: 1px solid var(--line); }
-  .segment__items { font-size: var(--step--1); color: var(--ink-muted); }
+  .segment:last-child { border-bottom: 1px solid var(--line); }
+  .segment h3 { color: var(--tera-green); }
+  .segment__items { font-size: var(--step--1); color: var(--ink-muted); margin-top: 0.35rem; }
+  .lane { background: var(--white); border-top: 3px solid var(--kraft); }
+  .lane__photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 50%; }
+  .lane__body { display: grid; gap: 0.75rem; padding: 1.75rem; }
+  .lane__body h3 { font-size: var(--step-2); color: var(--ink); }
+  .lane__body .text-link { justify-self: start; color: var(--tera-green); }
 
-  /* Packaging spec cards */
-  .packaging { background: var(--paper); border-block: 1px solid var(--line); }
+  /* Packaging */
+  .packaging { background: var(--paper); border-top: 1px solid var(--line); }
   .section-head--split {
     display: flex;
     flex-wrap: wrap;
@@ -312,159 +354,114 @@ const reasons = [
   .specs {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1.25rem, 2.5vw, 2rem);
     list-style: none;
     margin: 0;
     padding: 0;
-    border-block: 2px solid var(--tera-green);
   }
-  .spec {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    gap: 1rem;
-    padding: 1.25rem;
-    border-right: 1px solid var(--line);
-    min-width: 0;
+  .spec { display: grid; grid-template-rows: auto auto 1fr auto; gap: 0.9rem; min-width: 0; align-content: start; }
+  .spec__photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 2px;
+    margin-bottom: 0.4rem;
   }
-  .spec:last-child { border-right: none; }
-  .spec__body { display: grid; gap: 0.75rem; grid-template-rows: auto 1fr auto; }
-  .spec__formats { margin: 0; padding-left: 1.1rem; font-size: var(--step--1); display: grid; gap: 0.3rem; align-content: start; }
+  .spec h3 { font-size: var(--step-1); color: var(--ink); }
+  .spec__formats { margin: 0; padding-left: 1.1rem; font-size: var(--step--1); display: grid; gap: 0.3rem; align-content: start; color: var(--ink-muted); }
   .spec__formats li::marker { color: var(--kraft); }
-  .spec__best {
-    font-size: 0.8125rem;
-    color: var(--ink-muted);
-    padding-top: 0.75rem;
-    border-top: 1px dashed var(--line);
-  }
+  .spec__best { font-size: 0.8125rem; color: var(--ink-muted); padding-top: 0.75rem; border-top: 1px solid var(--line); }
   .spec__best span {
     display: block;
     font-family: var(--font-display);
     font-stretch: 125%;
     font-weight: 500;
     font-size: 0.6875rem;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--kraft-text);
   }
 
-  /* Route */
+  /* How it works */
+  .how__head p { color: var(--on-night-muted); max-width: 56ch; }
   .route {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1.5rem;
     list-style: none;
-    margin: 0;
+    margin: clamp(1rem, 3vw, 2rem) 0 0;
     padding: 0;
-    counter-reset: stop;
   }
-  .route__stop {
-    position: relative;
-    display: grid;
-    gap: 0.5rem;
-    align-content: start;
-    padding: 1.5rem 1.25rem 0 0;
-    border-top: 3px solid var(--tera-green);
-    counter-increment: stop;
-  }
-  .route__stop::before {
-    content: counter(stop);
-    position: absolute;
-    top: -0.85rem;
-    left: 0;
-    display: grid;
-    place-items: center;
-    width: 1.6rem;
-    height: 1.6rem;
-    border-radius: 50%;
-    background: var(--cream);
-    border: 2px solid var(--tera-green);
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.75rem;
-    color: var(--tera-green);
-  }
-  .route__stop::after {
-    content: '';
-    position: absolute;
-    top: -9px;
-    right: 0;
-    border-left: 12px solid var(--kraft);
-    border-top: 7.5px solid transparent;
-    border-bottom: 7.5px solid transparent;
-  }
-  .route__stop:last-child::after { display: none; }
-  .route__stop p { font-size: var(--step--1); color: var(--ink-muted); }
-
+  .route__stop { display: grid; gap: 0.45rem; align-content: start; padding-top: 1.1rem; border-top: 1px solid var(--kraft-gold); }
+  .route__no { font-family: var(--font-display); font-weight: 500; font-stretch: 125%; font-size: 0.75rem; letter-spacing: 0.18em; color: var(--kraft-gold); }
+  .route__stop h3 { color: #e3bc8c; font-size: var(--step-1); font-stretch: 112%; }
+  .route__stop p { font-size: var(--step--1); }
   .reorder {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 1rem 2rem;
-    margin-top: 3rem;
-    padding: 1.5rem 1.75rem;
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(244, 241, 234, 0.12);
   }
-  .reorder a { font-weight: 700; }
+  .reorder p { max-width: 70ch; }
+  .reorder strong { color: var(--on-night); }
 
   /* Why */
-  .why { background: var(--paper); border-top: 1px solid var(--line); }
   .why__grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
-    gap: clamp(2rem, 6vw, 5rem);
+    gap: clamp(2rem, 6vw, 5.5rem);
     align-items: start;
   }
   .why__head { margin: 0; }
-  .why__head a { font-weight: 700; }
+  .why__head .text-link { justify-self: start; }
   .reasons {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem 2.5rem;
+    gap: 2.25rem 2.75rem;
     list-style: none;
     margin: 0;
     padding: 0;
   }
-  .reasons li { display: grid; gap: 0.5rem; padding-top: 1rem; border-top: 2px solid var(--kraft); }
+  .reasons li { display: grid; gap: 0.5rem; align-content: start; padding-top: 1.1rem; border-top: 1px solid var(--kraft); }
+  .reasons h3 { color: var(--tera-green); }
   .reasons p { color: var(--ink-muted); }
   .reasons li:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
   /* Tablet */
   @media (max-width: 1024px) {
-    .segments { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .segment + .segment:nth-child(odd) { padding-left: 0; border-left: none; }
-    .segment:nth-child(n + 3) { border-top: 1px solid var(--line); }
-    .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .spec:nth-child(2) { border-right: none; }
-    .spec:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
-    .route { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 2.5rem; }
-    .route__stop:nth-child(3)::after { display: none; }
+    .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2.5rem; }
+    .route { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 2rem; }
     .why__grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 860px) {
+    .hero__grid { grid-template-columns: 1fr; }
+    .who__grid { grid-template-columns: 1fr; }
+    .lane { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+    .lane__photo { aspect-ratio: auto; height: 100%; }
   }
 
   /* Mobile */
-  @media (max-width: 760px) {
-    .hero { grid-template-columns: 1fr; min-height: 0; }
-    .hero__copy { padding: 2.5rem var(--gutter); }
-    .hero__media { border-left: none; border-top: 8px solid var(--tera-green); min-height: 0; }
-    .hero__photo { aspect-ratio: 4 / 3; height: auto; }
+  @media (max-width: 600px) {
     .hero__actions .btn { flex: 1 1 100%; }
-
-    .segments { grid-template-columns: 1fr; }
-    .segment, .segment + .segment { padding: 1.5rem 0; border-left: none; }
-    .segment + .segment { border-top: 1px solid var(--line); }
-
+    .hero__photo { aspect-ratio: 4 / 3.4; }
+    .hero__facts { flex-direction: column; gap: 0.6rem; }
+    .segment { grid-template-columns: 1fr; }
+    .lane { display: block; }
+    .lane__photo { aspect-ratio: 16 / 10; height: auto; }
+    .lane__body { padding: 1.4rem; }
     .reasons { grid-template-columns: 1fr; }
+    .route { grid-template-columns: 1fr; gap: 0; }
+    .route__stop { grid-template-columns: 2.5rem 1fr; column-gap: 0.75rem; padding: 1rem 0; }
+    .route__no { grid-row: span 2; padding-top: 0.2rem; }
   }
-
   @media (max-width: 560px) {
     .specs { grid-template-columns: 1fr; }
-    .spec { border-right: none; border-bottom: 1px solid var(--line); padding-inline: 0; }
-    .spec:last-child { border-bottom: none; }
-
-    .route { grid-template-columns: 1fr; row-gap: 0; border-left: 3px solid var(--tera-green); margin-left: 0.8rem; }
-    .route__stop { border-top: none; padding: 0 0 1.75rem 1.75rem; }
-    .route__stop::before { top: -0.1rem; left: -0.95rem; }
-    .route__stop::after { display: none; }
+    .spec__photo { aspect-ratio: 4 / 3; }
   }
 </style>
