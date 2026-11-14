@@ -1,12 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import { Image } from 'astro:assets';
-import heroImage from '../assets/hero-packaging-set.jpg';
-import boxesImage from '../assets/flower-bowl-white.jpg';
-import bagsImage from '../assets/kraft-bag-marble.jpg';
-import cupsImage from '../assets/cups-kraft-tone-pair.jpg';
-import wrapsImage from '../assets/sandwich-kraft-wrap-string.jpg';
-import retailImage from '../assets/kraft-bag-grey.jpg';
+import heroImage from '../assets/cafe-set-hero.jpg';
+import boxesImage from '../assets/navy-meal-set-sq.jpg';
+import bagsImage from '../assets/red-black-bags-pizza-sq.jpg';
+import cupsImage from '../assets/kraft-cups-sq.jpg';
+import wrapsImage from '../assets/mint-cup-cake-box-sq.jpg';
+import retailImage from '../assets/tote-bags-sq.jpg';
 import CtaBand from '../components/CtaBand.astro';
 
 const segments = [
@@ -31,28 +31,28 @@ const categories = [
   {
     name: 'Boxes and containers',
     image: boxesImage,
-    alt: 'A white fold-out paper bowl opened flat on a warm yellow backdrop',
+    alt: 'A navy meal set with a sample logo seal: an open compartment box with burgers, chicken and fries, a burger box, a coffee cup, a fry sleeve and a dip cup',
     formats: ['Fold-and-lock paper boxes', 'Fibre bowls and compartment trays', 'Window boxes for baked goods', 'Gift and retail boxes'],
     bestFor: 'Restaurants · bakeries · grab-and-go',
   },
   {
     name: 'Bags',
     image: bagsImage,
-    alt: 'A plain kraft paper bag with flat handles on a marble counter',
+    alt: 'Two paper shopping bags and a pizza box in black and red, each with a round sample logo seal',
     formats: ['Wide-gusset kraft takeout bags', 'Sealed delivery bags', 'Bakery bags with windows', 'Shopping and pharmacy bags'],
     bestFor: 'Takeout · delivery · grocers · shops',
   },
   {
     name: 'Cups, lids and sleeves',
     image: cupsImage,
-    alt: 'Two kraft-tone double-wall coffee cups with cream lids on a green backdrop',
+    alt: 'Two kraft-tone double-wall coffee cups with cream lids',
     formats: ['Double-wall printed cups', 'Plastic-free coated cups', 'Printed sleeves and soup cups'],
     bestFor: 'Cafés · bakeries · soup and noodle shops',
   },
   {
     name: 'Labels, stickers and wraps',
     image: wrapsImage,
-    alt: 'A sandwich wrapped in kraft paper and tied with string',
+    alt: 'A mint and chocolate-brown bakery set: a window box closed with a printed band, a matching coffee cup, a small label card and a cupcake',
     formats: ['Tamper-evident seal stickers', 'Printed wraps and deli paper', 'Product labels with a QR code'],
     bestFor: 'Everyone · the easiest first order',
   },
@@ -112,7 +112,7 @@ const reasons = [
       <figure class="hero__media rise rise-2">
         <Image
           src={heroImage}
-          alt="A sample set of custom-branded café and bakery packaging in deep green and cream: coffee cups, a cup carrier, paper bags, a shopping bag, pastry boxes and stickers on a marble counter"
+          alt="A sample set of café and bakery packaging in deep green and cream: coffee cups, a cup carrier, paper bags, a shopping bag and pastry boxes on a marble counter"
           class="hero__photo"
           widths={[480, 768, 1024]}
           sizes="(max-width: 860px) 100vw, 50vw"
@@ -155,7 +155,7 @@ const reasons = [
       <aside class="lane" aria-labelledby="lane-title">
         <Image
           src={retailImage}
-          alt="A small plain kraft shopping bag with twisted paper handles on a grey backdrop"
+          alt="Four reusable tote bags in red, black, white and blue, each printed with a round sample logo seal"
           class="lane__photo"
           widths={[400, 720]}
           sizes="(max-width: 860px) 100vw, 380px"
@@ -364,7 +364,7 @@ const reasons = [
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 2px;
     margin-bottom: 0.4rem;
@@ -453,7 +453,7 @@ const reasons = [
     .hero__facts { flex-direction: column; gap: 0.6rem; }
     .segment { grid-template-columns: 1fr; }
     .lane { display: block; }
-    .lane__photo { aspect-ratio: 16 / 10; height: auto; }
+    .lane__photo { aspect-ratio: 1 / 1; height: auto; }
     .lane__body { padding: 1.4rem; }
     .reasons { grid-template-columns: 1fr; }
     .route { grid-template-columns: 1fr; gap: 0; }
@@ -462,6 +462,6 @@ const reasons = [
   }
   @media (max-width: 560px) {
     .specs { grid-template-columns: 1fr; }
-    .spec__photo { aspect-ratio: 4 / 3; }
+    .spec__photo { aspect-ratio: 5 / 4.4; }
   }
 </style>
