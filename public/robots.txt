@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://terafoodnsupply.ca/sitemap.xml
