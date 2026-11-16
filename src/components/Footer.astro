@@ -21,8 +21,8 @@ const year = new Date().getFullYear();
     <div>
       <h2 class="site-footer__title">Contact</h2>
       <ul>
-        <li>Phone: <span class="ph-dark">[phone]</span></li>
-        <li>Email: <span class="ph-dark">[email]</span></li>
+        <li>Phone: <a href="tel:+15874296652">587-429-6652</a></li>
+        <li>Email: <a href="mailto:terafoodnsupply@gmail.com">terafoodnsupply@gmail.com</a></li>
         <li>Serving Calgary, Alberta</li>
       </ul>
     </div>
@@ -62,7 +62,6 @@ const year = new Date().getFullYear();
   .site-footer a { color: var(--cream); }
   .site-footer a:hover { color: var(--white); }
   .site-footer :focus-visible { outline-color: var(--kraft-glow); }
-  .ph-dark { color: #e6c18f; font-weight: 600; }
   .site-footer__base {
     display: flex;
     flex-wrap: wrap;
@@ -76,5 +75,8 @@ const year = new Date().getFullYear();
   @media (max-width: 760px) {
     .site-footer__grid { grid-template-columns: 1fr 1fr; }
     .site-footer__brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 480px) {
+    .site-footer__grid { grid-template-columns: 1fr; gap: 2rem; }
   }
 </style>
