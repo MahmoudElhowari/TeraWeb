@@ -19,8 +19,17 @@
   --line: #d9d4c7;
   --white: #ffffff;
 
+  /* Evening service: the deep green ground and its accents */
+  --night: #1e3826;          /* main dark ground */
+  --night-deep: #162b1d;     /* footer */
+  --night-line: rgba(201, 150, 90, 0.35);
+  --on-night: #f4f1ea;       /* text on night */
+  --on-night-muted: #c9d3c6; /* body text on night (AA on --night) */
+  --kraft-glow: #d9ae79;     /* headline accent on night */
+  --kraft-gold: #c9965a;     /* buttons and rules on night */
+
   /* Type */
-  --font-display: "Archivo", "Arial Black", system-ui, sans-serif;
+  --font-display: "Archivo", "Arial Narrow", "Arial", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --step--1: 0.875rem;
@@ -29,6 +38,7 @@
   --step-2: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
   --step-3: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
   --step-4: clamp(2.5rem, 1.6rem + 4vw, 4.5rem);
+  --step-5: clamp(3.25rem, 1.8rem + 6.2vw, 6.75rem);
 
   /* Layout */
   --max: 1200px;
@@ -62,8 +72,25 @@ h1, h2, h3 {
   margin: 0;
   text-wrap: balance;
 }
-h1 { font-size: var(--step-4); font-weight: 800; font-stretch: 125%; letter-spacing: -0.01em; }
-h2 { font-size: var(--step-3); font-weight: 800; font-stretch: 115%; }
+/* Big headlines: tall, condensed capitals (they sit on the dark green) */
+h1 {
+  font-size: var(--step-5);
+  font-weight: 700;
+  font-stretch: 70%;
+  line-height: 0.94;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+}
+h2 { font-size: var(--step-3); font-weight: 800; font-stretch: 112%; letter-spacing: -0.01em; line-height: 1.08; }
+/* Section titles on the dark bands use the condensed style too */
+.on-night h2, h2.condensed {
+  font-weight: 700;
+  font-stretch: 70%;
+  text-transform: uppercase;
+  font-size: clamp(2.25rem, 1.4rem + 3.6vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
 h3 { font-size: var(--step-1); font-weight: 700; font-stretch: 105%; line-height: 1.25; }
 p { margin: 0; max-width: 62ch; }
 
@@ -85,13 +112,23 @@ a:hover { color: var(--tera-green-deep); }
 
 .section { padding-block: var(--section); }
 
+/* Dark band */
+.on-night { background: var(--night); color: var(--on-night-muted); }
+.on-night h1, .on-night h2, .on-night h3 { color: var(--on-night); }
+.on-night a:not(.btn) { color: var(--on-night); text-decoration-color: var(--fresh-leaf); }
+.on-night a:not(.btn):hover { color: var(--white); }
+.on-night .eyebrow { color: var(--kraft-gold); }
+.on-night .ph { color: var(--kraft-glow); }
+.on-night :focus-visible { outline-color: var(--kraft-glow); }
+.accent { color: var(--kraft-glow); }
+
 .eyebrow {
   display: block;
   font-family: var(--font-display);
   font-weight: 500;
   font-stretch: 125%;
   font-size: 0.75rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--kraft-text);
 }
@@ -108,7 +145,7 @@ a:hover { color: var(--tera-green-deep); }
   min-height: 48px;
   padding: 0.75rem 1.4rem;
   border: 2px solid transparent;
-  border-radius: var(--radius);
+  border-radius: 3px;
   font-family: var(--font-body);
   font-weight: 700;
   font-size: var(--step-0);
@@ -125,6 +162,30 @@ a:hover { color: var(--tera-green-deep); }
 .btn-outline:hover { background: var(--tera-green); color: var(--white); }
 .btn-cream { background: var(--cream); color: var(--tera-green); }
 .btn-cream:hover { background: var(--white); color: var(--tera-green-deep); }
+.btn-kraft { background: var(--kraft-gold); color: var(--night); }
+.btn-kraft:hover { background: var(--kraft-glow); color: var(--night); }
+.btn-line { border-color: var(--kraft-gold); color: #e3bc8c; background: transparent; }
+.btn-line:hover { background: var(--kraft-gold); color: var(--night); }
+
+/* Plain text link with an arrow, used beside buttons */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.35em;
+}
+
+/* Gentle arrival for hero content */
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .rise-2 { animation-delay: 0.08s; }
+  .rise-3 { animation-delay: 0.16s; }
+  @keyframes rise { from { opacity: 0.001; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+}
 
 /* Visible placeholder for facts not confirmed yet */
 .ph { color: var(--kraft-text); font-weight: 600; }

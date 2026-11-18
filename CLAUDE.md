@@ -25,7 +25,7 @@ specialty food stores. Busy, mobile-first, skeptical of salespeople. Show, don't
 ## Tech
 - Astro (static site), plain CSS with custom properties for the brand tokens. No heavy UI frameworks.
 - Quote form: Netlify Forms. No custom backend.
-- Hosting: Netlify. Domain: already bought on GoDaddy [domain name to be confirmed]; point DNS to Netlify.
+- Hosting: Netlify. Domain: terafoodnsupply.ca (bought on GoDaddy, DNS points to Netlify, live with SSL since 2026-11-14).
 - Images optimised (WebP/AVIF, width/height set, lazy-loaded below the fold).
 
 ## Content rules

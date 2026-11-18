@@ -1,7 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import { Image } from 'astro:assets';
 import PhotoSlot from '../components/PhotoSlot.astro';
+import mealBox from '../assets/meal-box-food.jpg';
+import bagsPizza from '../assets/red-black-bags-pizza.jpg';
+import bowls from '../assets/black-bowls-bags.jpg';
+import kraftCups from '../assets/kraft-cups.jpg';
+import pinkBoxes from '../assets/pink-cake-boxes.jpg';
+import totes from '../assets/tote-bags.jpg';
+import mintSet from '../assets/mint-cup-cake-box.jpg';
+import dieCut from '../assets/snack-cup-flat.jpg';
 import CtaBand from '../components/CtaBand.astro';
 
 const groups = [
@@ -15,18 +24,24 @@ const groups = [
       {
         name: 'Food boxes and containers',
         photo: 'Branded fold-and-lock takeout box holding a meal',
+        image: mealBox,
+        alt: 'A hand holding a pale green compartment box with a hot dog, burgers, fries and three sauce cups',
         text: 'Fold-and-lock paper boxes that need no glue (some open flat into a plate), and moulded fibre bowls and multi-compartment trays.',
         bestFor: 'Restaurants · grab-and-go',
       },
       {
         name: 'Takeout and delivery bags',
         photo: 'Kraft takeout bag with a printed logo and flat handles',
+        image: bagsPizza,
+        alt: 'Two paper carry bags and a pizza box in black and red, each with a round sample logo seal',
         text: 'Kraft bags with wide gussets and flat handles that fit food containers properly, and tamper-evident sealed bags for delivery orders.',
         bestFor: 'Takeout · delivery',
       },
       {
         name: 'Soup cups and lids',
         photo: 'Printed soup cup with a lid next to a bowl of soup',
+        image: bowls,
+        alt: 'A black set with sample logo seals: soup bowls and dip cups with clear lids, a carry box with a cord handle and a pyramid box',
         text: 'Printed paper soup and noodle cups with matching lids, sized to your portions.',
         bestFor: 'Soup and noodle shops',
       },
@@ -48,24 +63,32 @@ const groups = [
       {
         name: 'Cups, lids and sleeves',
         photo: 'Printed double-wall coffee cup with a branded sleeve',
+        image: kraftCups,
+        alt: 'Two kraft-tone double-wall coffee cups with cream lids',
         text: 'Double-wall printed paper cups, plastic-free (PE-free) coated cups, and printed sleeves.',
         bestFor: 'Cafés · bakeries',
       },
       {
         name: 'Bakery boxes and bags',
         photo: 'Windowed pastry box and a bakery bag with a window',
+        image: pinkBoxes,
+        alt: 'Pink cake boxes with round sample logo seals, one open to show a chocolate-topped cake',
         text: 'Window boxes that show off baked goods, and bakery bags with windows.',
         bestFor: 'Bakeries · cafés',
       },
       {
         name: 'Product boxes and branded bags',
         photo: 'Branded product box on a store shelf and a shopping bag',
+        image: totes,
+        alt: 'Four reusable tote bags in red, black, white and blue, each printed with a round sample logo seal',
         text: 'Shelf-ready product boxes and branded carry bags for grocers and specialty food stores.',
         bestFor: 'Grocers · specialty food',
       },
       {
         name: 'Labels, wraps and deli paper',
         photo: 'Product label with a QR code and a printed sandwich wrap',
+        image: mintSet,
+        alt: 'A mint and chocolate-brown bakery set: a window box closed with a printed band, a matching coffee cup, a small label card and a cupcake',
         text: 'Product labels with a QR code that links to your menu, reviews or reorders, plus printed wraps and deli paper.',
         bestFor: 'Specialty food · delis · cafés',
       },
@@ -114,6 +137,10 @@ const tiers = [
   <section class="section section--tight" aria-labelledby="design-title">
     <div class="container design">
       <h2 id="design-title" class="visually-hidden">How we design your packaging</h2>
+      <figure class="design__media">
+        <Image src={dieCut} alt="A flat white die-cut paperboard sleeve with a cup-holder hole and a scalloped flap, before it is folded" class="design__photo" widths={[480, 800]} sizes="(max-width: 900px) 100vw, 40vw" />
+        <figcaption>Every structure starts as a flat die-cut, shaped around the food it holds.</figcaption>
+      </figure>
       <ol class="design__steps">
         {designSteps.map((d) => (
           <li>
@@ -136,7 +163,11 @@ const tiers = [
         <ul class="items">
           {g.items.map((it) => (
             <li class="item">
-              <PhotoSlot label={it.photo} ratio="4 / 3" />
+              {it.image ? (
+                <Image src={it.image} alt={it.alt} class="item__photo" widths={[400, 640]} sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 300px" />
+              ) : (
+                <PhotoSlot label={it.photo} ratio="4 / 3" />
+              )}
               <div class="item__body">
                 <h3>{it.name}</h3>
                 <p>{it.text}</p>
@@ -242,9 +273,19 @@ const tiers = [
   }
   .jump a { padding-block: 0.4rem; }
 
+  .design {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+  }
+  .design__media { margin: 0; }
+  .design__photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; }
+  .design__media figcaption { margin-top: 0.6rem; font-size: var(--step--1); color: var(--ink-muted); }
+  .item__photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; }
   .design__steps {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 2rem;
     list-style: none;
     margin: 0;
@@ -380,7 +421,8 @@ const tiers = [
   }
 
   @media (max-width: 760px) {
-    .design__steps { grid-template-columns: 1fr; gap: 1.5rem; }
+    .design { grid-template-columns: 1fr; }
+    .design__steps { gap: 1.5rem; }
   }
 
   @media (max-width: 560px) {
