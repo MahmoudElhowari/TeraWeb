@@ -18,7 +18,6 @@ Studio shots were cut out and placed on one shared warm beige backdrop, sampled 
 | mint-cup-cake-box(.jpg, -sq) | Mint cup, window box with band, label card, cupcake | Beige |
 | kraft-cups(.jpg, -sq) | Two kraft-tone double-wall cups | Beige; a sample "NEXT STOP" print was removed |
 | snack-cup-flat.jpg | Flat white die-cut snack sleeve | Beige |
-| tera-sticker-bag.jpg | Kraft carry bag with a round Tera logo sticker (About page) | Mockup, see note below |
 | sticker-roll-seals.jpg | Roll of round Tera logo stickers and three tamper seal strips | Mockup, see note below |
 
 ## Mockups
@@ -28,6 +27,3 @@ Studio shots were cut out and placed on one shared warm beige backdrop, sampled 
 (https://unsplash.com/photos/ThjUa4yYeX8, Unsplash License: free for commercial use, edits allowed).
 The original stickers were replaced with the Tera mark and the tamper seal strips were added (2026-11-18).
 The seal wording ("Sealed for you", "Do not accept if this seal is broken") is a placeholder design.
-
-`tera-sticker-bag.jpg` is also a mockup. The base is a plain kraft bag on marble by Brando Makes Branding on Unsplash
-(https://unsplash.com/photos/Dk7vG3MJ3hU, Unsplash License). A round Tera logo sticker was added and the photo was cropped to 4:5.
