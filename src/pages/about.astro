@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
-import PhotoSlot from '../components/PhotoSlot.astro';
 import CtaBand from '../components/CtaBand.astro';
 
 const values = [
@@ -57,11 +56,6 @@ const values = [
         </p>
         <p class="story__sign">You focus on the food. We'll make sure it arrives looking like your brand.</p>
       </div>
-      <PhotoSlot
-        tone="kraft"
-        ratio="4 / 5"
-        label="The founders at work: hands checking a packaging sample on a kitchen counter (no faces needed)"
-      />
     </div>
   </section>
 
@@ -126,13 +120,7 @@ const values = [
 </Base>
 
 <style>
-  .story {
-    display: grid;
-    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-    gap: clamp(2rem, 6vw, 5rem);
-    align-items: start;
-  }
-  .story__copy { display: grid; gap: 1.25rem; font-size: var(--step-1); }
+  .story__copy { display: grid; gap: 1.25rem; max-width: 46rem; font-size: var(--step-1); }
   .story__copy h2 { margin-bottom: 0.25rem; }
   .story__sign {
     font-family: var(--font-display);
@@ -195,7 +183,7 @@ const values = [
     .values li:last-child { grid-column: 1 / -1; }
   }
   @media (max-width: 760px) {
-    .story, .where { grid-template-columns: 1fr; }
+    .where { grid-template-columns: 1fr; }
     .name { grid-template-columns: 1fr; }
     .name__parts { grid-template-columns: 1fr; }
   }
