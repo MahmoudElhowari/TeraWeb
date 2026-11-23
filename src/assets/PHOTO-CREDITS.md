@@ -18,6 +18,7 @@ Studio shots were cut out and placed on one shared warm beige backdrop, sampled 
 | mint-cup-cake-box(.jpg, -sq) | Mint cup, window box with band, label card, cupcake | Beige |
 | kraft-cups(.jpg, -sq) | Two kraft-tone double-wall cups | Beige; a sample "NEXT STOP" print was removed |
 | snack-cup-flat.jpg | Flat white die-cut snack sleeve | Beige |
+| sandwich-kraft-wrap.jpg | Sandwich in kraft paper tied with string (About page) | Unsplash, Khanh Nguyen, https://unsplash.com/photos/rJzh03As1vo (cropped to 4:5) |
 | sticker-roll-seals.jpg | Roll of round Tera logo stickers and three tamper seal strips | Mockup, see note below |
 
 ## Mockups
